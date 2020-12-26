@@ -1,0 +1,31 @@
+{% extends "homepage/base.html" %}
+{%  load static %}
+
+{% block main %}
+<div class="container">
+    <h1 class="display-4">{{club.name}}</h1>
+    <hr>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Batch</th>
+          <th scope="col">Position</th>
+          <th scope="col">Academic Year</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for member in members %}
+          <tr>
+            <th scope="row">{{member.serial}}</th>
+            <td>{{member.name}}</td>
+            <td>{{member.batch}}</td>
+            <td>{{member.position}}</td>
+            <td>{{member.from}}</td>
+          </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+</div>
+{% endblock %}

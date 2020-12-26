@@ -1,0 +1,27 @@
+@import url(https://fonts.googleapis.com/css?family=Merriweather:400,900italic,900,700italic,700,400italic);
+
+.container section {
+    color: #000000;
+    padding: 40px 0;
+    background-size: 100%;
+    background-position: 50% 30%;
+    background-repeat: no-repeat;
+    
+    opacity: 0.85
+}
+.divider {
+    padding:0;
+    margin:0;
+}
+.divider h1 {
+    margin: 10%;
+    text-align:center;
+    font-size:48px;
+    color: #fff;
+}
+
+@media only screen and (max-width: 700px){
+  .divider h1{
+    font-size: 30px;
+  }
+}

@@ -1,0 +1,185 @@
+{%  load static %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href={% static "css/calendar.css" %}>
+    <!-- link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap-grid.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <script type="text/javascript" src={% static "js/main.js" %}>
+
+    </script>
+  </head>
+
+  <body>
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand" href="{% url 'home' %}"><img src={% static "images/Logo.jpg" %} width=50 height=50></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href={% url 'home' %}>Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Committees
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% for committee in committees %}
+                      <li><a class="dropdown-item" href={% url 'committee_detail' pk=committee.pk%}>{{committee.name}}</a></li>
+                    {% endfor %}
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Clubs
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% for club in clubs %}
+                      <li><a class="dropdown-item" href={% url 'club_detail' pk=club.pk%}>{{club.name}}</a></li>
+                    {% endfor %}
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Festivals
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% for fest in fests %}
+                      <li><a class="dropdown-item" href={% url 'festival_detail' pk=fest.pk%}>{{fest.name}}</a></li>
+                    {% endfor %}
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Miscellaneous
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href={% url 'gallery'%}>Gallery</a></li>
+                      <li><a class="dropdown-item" href={% url 'calendar'%}>Calendar</a></li>
+                  </ul>
+                </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="sidebar-wrapper z-depth-2 side-nav fixed" id="sidebar" style="position: relative">
+
+
+                  <div class="sidebar-title">
+                    <h4>Events</h4>
+                    <h5 id="eventDayName">Date</h5>
+                  </div>
+                  <div class="sidebar-events" id="sidebarEvents">
+                    <div class="empty-message">Sorry, no events to selected date</div>
+                  </div>
+
+                </div>
+            </div>
+            <div class="col-md-8">
+              <div class="container shadow p-1 mb-2 bg-white rounded">
+
+                <div class="calendar-wrapper z-depth-2">
+
+                  <div class="header-background">
+                    <div class="calendar-header">
+
+                      <a class="prev-button" id="prev">
+                        <i class="material-icons">keyboard_arrow_left</i>
+                      </a>
+                      <a class="next-button" id="next">
+                        <i class="material-icons">keyboard_arrow_right</i>
+                      </a>
+
+                      <div class="row header-title">
+
+                        <div class="header-text">
+                          <h3 id="month-name">February</h3>
+                          <h5 id="todayDayName">Today is Friday 7 Feb</h5>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="calendar-content">
+                    <div id="calendar-table" class="calendar-cells">
+
+                      <div id="table-header">
+                        <div class="row">
+                          <div class="col">M</div>
+                          <div class="col">T</div>
+                          <div class="col">W</div>
+                          <div class="col">T</div>
+                          <div class="col">F</div>
+                          <div class="col">S</div>
+                          <div class="col">S</div>
+                        </div>
+                      </div>
+
+                      <div id="table-body" class="">
+
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <footer class="page-footer font-small pt-4" style="background-color: #aaa;">
+
+      <div class="container-fluid text-center text-md-left">
+        <div class="row">
+          <div class="col-md-6 mt-md-0 mt-3">
+            <h5 class="text-uppercase">Footer Content</h5>
+            <p>Here you can use rows and columns to organize your footer content.</p>
+          </div>
+          <hr class="clearfix w-100 d-md-none pb-3">
+          <div class="col-md-3 mb-md-0 mb-3">
+            <h5 class="text-uppercase">Links</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href={% url 'home' %} class="nav-link" style="padding:0">Home</a>
+              </li>
+              <li>
+                <a href="#!" class="nav-link" style="padding:0">Link 2</a>
+              </li>
+              <li>
+                <a href="#!" class="nav-link" style="padding:0">Link 3</a>
+              </li>
+              <li>
+                <a href="#!" class="nav-link" style="padding:0">Link 4</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright text-center py-3 dark">
+                Designed and developed by <a href="https://makingcomputerssmart.com/" rel="noreferrer noopener nofollow" target="_blank" style="text-decoration: none;">Tanmay Ambadkar</a>
+      </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script>
+      $(".button-collapse").sideNav();
+    </script>
+    <script src={% static "js/calendar.js" %}></script>
+
+  </body>
+</html>

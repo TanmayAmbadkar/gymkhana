@@ -1,16 +1,46 @@
 from django.contrib import admin
-
-# Register your models here.
-from django.contrib import admin
 from committees.models import *
 # Register your models here.
 
-admin.site.register(Committee)
-admin.site.register(CommitteeEvent)
-admin.site.register(Photos)
-admin.site.register(CarouselPhotos)
-admin.site.register(CommitteeAdmin)
-admin.site.register(President)
-admin.site.register(Member)
-admin.site.register(PIC)
-admin.site.register(CalendarEvent)
+class CommitteeAdmin(admin.ModelAdmin):
+
+    def get_queryset(self, request):
+
+        qs = super(CommitteeAdmin, self).get_queryset(request)
+        if request.user.is_superuser:
+            return qs
+
+        committee = Committee.objects.get(user=request.user)
+        print(committee)
+        return qs.filter(user=request.user)
+
+    def get_form(self, request, obj=None, **kwargs):
+
+        if request.user.is_superuser:
+            return super(ClubAdmin, self).get_form(request, obj, **kwargs)
+
+        self.exclude = ('user', )
+        form = super(CommitteeAdmin, self).get_form(request, obj, **kwargs)
+        return form
+
+class FieldsAdmin(admin.ModelAdmin):
+
+    def get_queryset(self, request):
+
+        qs = super(FieldsAdmin, self).get_queryset(request)
+        if request.user.is_superuser:
+            return qs
+
+        committee = Committee.objects.get(user=request.user)
+        print(committee)
+        return qs.filter(committee=committee)
+
+
+admin.site.register(Committee, CommitteeAdmin)
+admin.site.register(CommitteeEvent, FieldsAdmin)
+admin.site.register(Photos, FieldsAdmin)
+admin.site.register(CarouselPhotos, FieldsAdmin)
+admin.site.register(President, FieldsAdmin)
+admin.site.register(Member, FieldsAdmin)
+admin.site.register(PIC, FieldsAdmin)
+admin.site.register(CalendarEvent, FieldsAdmin)

@@ -10,7 +10,6 @@ from django.core import serializers
 from django.http import HttpResponse
 import pandas as pd
 from clubs.models import *
-from clubs.forms import *
 
 # Create your views here.
 class ClubDetailView(DetailView):

@@ -4,4 +4,3 @@ from festivals.models import *
 admin.site.register(Festival)
 admin.site.register(Photos)
 admin.site.register(CarouselPhotos)
-admin.site.register(FestAdmin)

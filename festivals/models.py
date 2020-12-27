@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Festival(models.Model):
 
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, primary_key=True)
     logo = models.ImageField(upload_to="logos/", null = True, blank=True)
@@ -53,11 +54,3 @@ class CarouselPhotos(models.Model):
 
     def __str__(self):
         return self.fest.name
-
-class FestAdmin(models.Model):
-
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    fest = models.OneToOneField(Festival, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"{self.user.username} {self.fest.name}"

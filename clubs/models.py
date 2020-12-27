@@ -4,6 +4,7 @@ from committees.models import *
 # Create your models here.
 class Club(models.Model):
 
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, primary_key=True)
     logo = models.ImageField(upload_to="logos/", null = True, blank=True)
@@ -86,16 +87,6 @@ class JointSecretary(models.Model):
 
     def __str__(self):
         return f"{self.name} {self.club.name}"
-
-
-
-class PageAdmin(models.Model):
-
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    club = models.OneToOneField(Club, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"{self.user.username} {self.club.name}"
 
 class Members(models.Model):
 

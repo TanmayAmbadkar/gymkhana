@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 
 class Committee(models.Model):
 
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, primary_key=True)
     logo = models.ImageField(upload_to="logos/", null = True, blank=True)
@@ -79,14 +80,6 @@ class President(models.Model):
 
     def __str__(self):
         return f"{self.name} {self.committee.name}"
-
-class CommitteeAdmin(models.Model):
-
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    committee = models.OneToOneField(Committee, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"{self.user.username} {self.committee.name}"
 
 class PIC(models.Model):
 

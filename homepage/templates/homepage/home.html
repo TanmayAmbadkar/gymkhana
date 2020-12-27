@@ -3,9 +3,9 @@
 
 {% block css %}
     <link rel="stylesheet" href={% static "css/homepage.css" %}>
-    <script type="text/javascript" src={% static "js/site.js" %}>
-    </script>
-    <script type="text/javascript" src = {% static "js/clock.js" %}></script>
+    <link rel="stylesheet" href={% static "css/new.css" %}>
+    <script type="text/javascript" src={% static "js/site.js" %}></script>
+    {# <script type="text/javascript" src = {% static "js/clock.js" %}></script> #}
 {% endblock %}
 
 {% block main %}
@@ -26,114 +26,57 @@
     <div class="container" id="ann">
         <h3 class="display-6"><u>Announcements</u></h3>
         <br>
-        <div class="row">
-            {% for announcement in announcements %}
-            <div class="col-md-4">
-              <div class="card bio" style="border: none">
-                <div class="card-body">
-                  <h5 class="card-title">{{announcement.title}}</h5>
-                  <hr>
-                  <div class="card-text">{{announcement.description|safe}}</div>
-                </div>
-              </div>
-            </div>
-            {% endfor %}
+        <div class="physicianList">
+            <input type='hidden' id='current_page' />
+            <input type='hidden' id='show_per_page' />
+            <ul id="pagingBox">
+                {% for announcement in announcements %}
+               <li>
+                     <div class="card bio" style="border: none">
+                       <div class="card-body">
+                         <h5 class="card-title">{{announcement.title}}</h5>
+                         <hr>
+                         <div class="card-text">{{announcement.description|safe}}</div>
+                       </div>
+                     </div>
+               </li>
+               {% endfor %}
+            </ul>
+            <div id='page_navigation'></div>
         </div>
         <br>
-        <nav aria-label="Page navigation example" style="text-align:center;">
-          <ul class="pagination">
-              {% if announcements.has_previous %}
-            <li class="page-item">
-              <a class="page-link" href="?ann={{announcements.previous_page_number}}#ann" onclick="getPos()" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-              <li class="page-item"><a class="page-link" href="?ann={{announcements.previous_page_number}}#ann" onclick="getPos()">{{announcements.previous_page_number}}<a></li>
-            </li>
-            {% else %}
-            <li class="page-item disabled">
-              <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-            {% endif %}
-
-            <li class="page-item active"><a class="page-link" href="javascript:">{{announcements.number}}</a></li>
-
-            {% if announcements.has_next %}
-
-                <li class="page-item"><a class="page-link" href="?ann={{announcements.next_page_number}}#ann" onclick="getPos()">{{announcements.next_page_number}}<a></li>
-                <li class="page-item">
-                  <a class="page-link" href="?ann={{announcements.next_page_number}}#ann" aria-label="Next" onclick="getPos()">
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
-              </li>
-            {% else %}
-            <li class="page-item disabled">
-              <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
-            {% endif %}
-
-          </ul>
-        </nav>
     </div>
     <hr class="container">
     <div class="container" id="news">
         <h3 class="display-6"><u>News</u></h3>
         <br>
-        <div class="row">
-            <div class="row">
+        <div class="physicianList2">
+            <input type='hidden' id='current_page2' />
+            <input type='hidden' id='show_per_page2' />
+            <ul id="pagingBox2">
                 {% for new in news %}
-                <div class="col-md-4">
-                  <div class="card bio" style="border: none">
-                    <div class="card-body">
-                      <h5 class="card-title">{{new.title}}</h5>
-                      <hr>
-                      <div class="card-text">{{new.description|safe}}</div>
-                    </div>
-                  </div>
-                </div>
-                {% endfor %}
-            </div>
+               <li>
+                     <div class="card bio" style="border: none">
+                       <div class="card-body">
+                         <h5 class="card-title">{{new.title}}</h5>
+                         <hr>
+                         <div class="card-text">{{new.description|safe}}</div>
+                       </div>
+                     </div>
+               </li>
+               {% endfor %}
+            </ul>
+            <div id='page_navigation2'></div>
         </div>
         <br>
-        <nav aria-label="Page navigation example" style="text-align:center;">
-            <ul class="pagination">
-                {% if news.has_previous %}
-              <li class="page-item">
-                <a class="page-link" href="?ann={{news.previous_page_number}}#news" aria-label="Previous" onclick="getPos()">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li class="page-item"><a class="page-link" href="?news={{news.previous_page_number}}#news" onclick="getPos()">{{news.previous_page_number}}<a></li>
-              {% else %}
-              <li class="page-item disabled">
-                <a class="page-link " href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              {% endif %}
-
-              <li class="page-item active"><a class="page-link" href="javascript:"  onclick="getPos()">{{news.number}}</a></li>
-
-              {% if news.has_next %}
-                <li class="page-item"><a class="page-link" href="?news={{news.next_page_number}}#news" onclick="getPos()">{{news.next_page_number}}<a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="?news={{news.next_page_number}}#news" onclick="getPos()" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-              {% else %}
-              <li class="page-item disabled">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-              {% endif %}
-
-            </ul>
-        </nav>
 
     </div>
+
+{% endblock %}
+
+{% block js %}
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src = {% static "js/new.js" %}></script>
+<script type="text/javascript" src = {% static "js/new1.js" %}></script>
 {% endblock %}

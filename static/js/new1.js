@@ -82,4 +82,7 @@ function go_to_page2(page_num){
 
 	//update the current page input field
 	$('#current_page2').val(page_num);
+
+	document.getElementById('news').scrollIntoView();
+
 }

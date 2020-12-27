@@ -82,4 +82,6 @@ function go_to_page(page_num){
 
 	//update the current page input field
 	$('#current_page').val(page_num);
+
+	document.getElementById('ann').scrollIntoView();
 }

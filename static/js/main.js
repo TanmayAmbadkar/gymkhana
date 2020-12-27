@@ -1,6 +1,6 @@
 var globalEventObj = {}
 
-fetch('http://13.126.197.5/calendar/dates').then(function(response){
+fetch('http://localhost:8000/calendar/dates').then(function(response){
 
   return response.json();
 

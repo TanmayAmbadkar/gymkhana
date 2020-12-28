@@ -36,8 +36,24 @@
                 <div class="bio-body">
                     <h2>{{festival.name}}</h2>
                     <p class="social">
-                        <a class="p-2" href="mailto:{{festival.mail}}"><i class="fa fa-envelope"></i><span class="sr-only">(current)</span></a>
-                        <a href="{{festival.url}}" rel="noreferrer" target="_blank" class="p-2"><span class="fa fa-globe"></span></a>
+                        {% if festival.mail %}
+                        <a href="mailto:{{festival.mail}}" class="p-2"><span class="fa fa-envelope"></span></a>
+                        {% endif %}
+                        {% if festival.linkedin %}
+                        <a href="{{festival.linkedin}}" rel="noreferrer" target="_blank" class="p-2"><span class="fa fa-linkedin"></span></a>
+                        {% endif %}
+                        {% if festival.github %}
+                        <a href="{{festival.github}}" rel="noreferrer" target="_blank" class="p-2"><span class="fa fa-github"></span></a>
+                        {% endif %}
+                        {% if festival.instagram %}
+                        <a href="{{festival.instagram}}" rel="noreferrer" target="_blank" class="p-2"><span class="fa fa-instagram"></span></a>
+                        {% endif %}
+                        {% if festival.facebook %}
+                        <a href="{{festival.facebook}}" rel="noreferrer" target="_blank" class="p-2"><span class="fa fa-facebook"></span></a>
+                        {% endif %}
+                        {% if festival.twitter %}
+                        <a href="{{festival.twitter}}" rel="noreferrer" target="_blank" class="p-2"><span class="fa fa-twitter"></span></a>
+                        {% endif %}
                     </p>
                 </div>
             </div>

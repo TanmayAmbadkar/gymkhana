@@ -38,9 +38,26 @@
                     <div class="bio-body">
                         <h2>{{club.name}}</h2>
                         <p>
+                            {% if club.mail %}
                             <a href="mailto:{{club.mail}}" class="p-2"><span class="fa fa-envelope"></span></a>
+                            {% endif %}
+                            {% if club.linkedin %}
                             <a href="{{club.linkedin}}" rel="noreferrer" target="_blank" class="p-2"><span class="fa fa-linkedin"></span></a>
+                            {% endif %}
+                            {% if club.github %}
                             <a href="{{club.github}}" rel="noreferrer" target="_blank" class="p-2"><span class="fa fa-github"></span></a>
+                            {% endif %}
+                            {% if club.instagram %}
+                            <a href="{{club.instagram}}" rel="noreferrer" target="_blank" class="p-2"><span class="fa fa-instagram"></span></a>
+                            {% endif %}
+                            {% if club.facebook %}
+                            <a href="{{club.facebook}}" rel="noreferrer" target="_blank" class="p-2"><span class="fa fa-facebook"></span></a>
+                            {% endif %}
+                            {% if club.twitter %}
+                            <a href="{{club.twitter}}" rel="noreferrer" target="_blank" class="p-2"><span class="fa fa-twitter"></span></a>
+                            {% endif %}
+
+
                         </p>
                     </div>
                 </div>
@@ -122,11 +139,11 @@
         <div class="card-group">
           <div class="card">
             <img src="/media/{{photos.photo4}}" class="card-img-top" alt="..." height="250" style="object-fit: cover;">
-             <p>{{photos.caption4}}</p> 
+             <p>{{photos.caption4}}</p>
 	</div>
           <div class="card">
             <img src="/media/{{photos.photo5}}" class="card-img-top" alt="..." height="250" style="object-fit: cover;">
-		<p>{{photos.caption5}}</p>          
+		<p>{{photos.caption5}}</p>
 	</div>
           <div class="card">
             <img src="/media/{{photos.photo6}}" class="card-img-top" alt="..." height="250" style="object-fit: cover;">
@@ -136,15 +153,15 @@
         <div class="card-group">
           <div class="card">
             <img src="/media/{{photos.photo7}}" class="card-img-top" alt="..." height="250" style="object-fit: cover;">
-        	<p>{{photos.caption7}}</p>  
+        	<p>{{photos.caption7}}</p>
 	</div>
           <div class="card">
             <img src="/media/{{photos.photo8}}" class="card-img-top" alt="..." height="250" style="object-fit: cover;">
-        	<p>{{photos.caption8}}</p>  
+        	<p>{{photos.caption8}}</p>
 	</div>
           <div class="card">
             <img src="/media/{{photos.photo9}}" class="card-img-top" alt="..." height="250" style="object-fit: cover;">
-        	<p>{{photos.caption9}}</p>  
+        	<p>{{photos.caption9}}</p>
 	</div>
         </div>
 

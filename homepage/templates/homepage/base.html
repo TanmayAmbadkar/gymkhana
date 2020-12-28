@@ -40,7 +40,7 @@
                   Clubs
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  {% for club in clubs %}
+                  {% for club in clubs_base %}
                     <li><a class="dropdown-item" href={% url 'club_detail' pk=club.pk%}>{{club.name}}</a></li>
                   {% endfor %}
                 </ul>

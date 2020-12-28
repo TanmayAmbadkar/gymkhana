@@ -1,6 +1,6 @@
 var globalEventObj = {}
 
-fetch('http://13.126.197.5/calendar/dates').then(function(response){
+fetch('http://gymkhana.ml/calendar/dates').then(function(response){
 
   return response.json();
 

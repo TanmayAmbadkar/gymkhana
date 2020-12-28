@@ -5,7 +5,7 @@ from festivals.models import Festival
 def get_clubs(request):
 
     clubs = Club.objects.all()
-    return {"clubs": clubs}
+    return {"clubs_base": clubs}
 
 def get_committees(request):
     committees = Committee.objects.all()

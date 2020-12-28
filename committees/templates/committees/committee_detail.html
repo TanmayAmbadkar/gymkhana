@@ -107,7 +107,7 @@
                 {% for club in clubs %}
                     <div class="col-md-6">
                         <div class="bio text-center" style="border: 1px solid #e6e6e6;padding:1rem;margin:2rem">
-                            <img src="/media/{{club.logo}}" class="rounded-circle" height="200" width=auto >
+                            <img src="/media/{{club.logo}}" class="rounded-circle" height="150" width=auto >
                             <hr>
                             <div class="bio-body">
                                 <h4><a href={% url 'club_detail' pk=club.pk %}>{{club.name}}</a></h4>
@@ -124,7 +124,7 @@
                 {% for event in events %}
                     <div class="col-md-6">
                         <div class="bio text-center" style="border: 1px solid #e6e6e6;padding:1rem;margin:2rem">
-                            <img src="/media/{{event.logo}}" class="rounded-circle" width=200 height=auto>
+                            <img src="/media/{{event.logo}}" class="rounded-circle" width=150 height=auto>
                             <div class="bio-body">
                                 <h4>{{event.name}}</h4>
                                 <p>{{event.description}}</p>

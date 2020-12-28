@@ -171,6 +171,7 @@ function showEvents() {
       emptyMessage.innerHTML = "Sorry, no events to selected date";
       sidebarEvents.appendChild(emptyMessage);
    }
+   document.getElementById('sidebar').scrollIntoView();
 }
 
 gridTable.onclick = function (e) {

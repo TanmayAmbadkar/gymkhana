@@ -4,7 +4,7 @@ from festivals.models import Festival
 
 def get_clubs(request):
 
-    clubs = Club.objects.all()
+    clubs = Club.objects.all().order_by('name')
     return {"clubs_base": clubs}
 
 def get_committees(request):

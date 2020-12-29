@@ -11,6 +11,7 @@ class FestAdmin(admin.ModelAdmin):
             return qs
 
         return qs.filter(user=request.user)
+'''
 
     def get_form(self, request, obj=None, **kwargs):
         if request.user.is_superuser:
@@ -20,7 +21,7 @@ class FestAdmin(admin.ModelAdmin):
         form = super(FestAdmin, self).get_form(request, obj, **kwargs)
         return form
 
-
+'''
 class FieldsAdmin(admin.ModelAdmin):
 
     def get_queryset(self, request):

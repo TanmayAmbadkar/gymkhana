@@ -17,9 +17,9 @@ class CommitteeAdmin(admin.ModelAdmin):
     def get_form(self, request, obj=None, **kwargs):
 
         if request.user.is_superuser:
-            return super(ClubAdmin, self).get_form(request, obj, **kwargs)
+            return super(CommitteeAdmin, self).get_form(request, obj, **kwargs)
 
-        self.exclude = ('user', )
+        self.exclude = ('user', 'slug')
         form = super(CommitteeAdmin, self).get_form(request, obj, **kwargs)
         return form
 

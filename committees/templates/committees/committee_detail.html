@@ -101,7 +101,8 @@
                   </tbody>
                 </table>
             </div>
-
+	    
+	    {% if clubs %}
             <h1 class="display-6"><u>Clubs under the committee</u></h1>
             <div class="row">
                 {% for club in clubs %}
@@ -117,6 +118,7 @@
                 {% endfor %}
             </div>
             <hr>
+            {% endif %}
             <h1 class="display-6"><u>Events</u></h1>
             The Committee organises the following events in an academic year
             <br>

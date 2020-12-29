@@ -18,7 +18,7 @@ class ClubAdmin(admin.ModelAdmin):
         if request.user.is_superuser:
             return super(ClubAdmin, self).get_form(request, obj, **kwargs)
 
-        self.exclude = ('user', )
+        self.exclude = ('user', 'slug', 'committee')
         form = super(ClubAdmin, self).get_form(request, obj, **kwargs)
         return form
 

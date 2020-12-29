@@ -54,6 +54,9 @@
                         {% if festival.twitter %}
                         <a href="{{festival.twitter}}" rel="noreferrer" target="_blank" class="p-2"><span class="fa fa-twitter"></span></a>
                         {% endif %}
+                        {% if festival.url %}
+			<a href="{{festival.url}}" rel="noreferrer" target="_blank" class="p-2"><span class="fa fa-globe"></span></a>
+			{% endif %}
                     </p>
                 </div>
             </div>

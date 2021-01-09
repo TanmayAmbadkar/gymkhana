@@ -5,8 +5,7 @@ a{
     color: #31708f;
 }
 .physicianList ul{margin: 0; padding: 0; list-style: none;}
-.physicianList ul li{width: 350px; float: left; margin-right: 15px; margin-bottom: 15px;}
-
+.physicianList ul li{width: 300px; float: left}
 /*Pagination CSS*/
 #page_navigation {
   clear:both;
@@ -25,8 +24,7 @@ a{
 }
 
 .physicianList2 ul{margin: 0; padding: 0; list-style: none;}
-.physicianList2 ul li{width: 350px; float: left; margin-right: 15px; margin-bottom: 15px;}
-
+.physicianList2 ul li{width: 300px;float: left;}
 /*Pagination CSS*/
 #page_navigation2 {
   clear:both;
@@ -35,11 +33,38 @@ a{
 #page_navigation2 a{
 	padding:3px 6px;
 	border:1px solid #2e6da4;
-	margin:2px;
+	top:10rem;
 	color:black;
 	text-decoration:none
 }
 .active_page2{
 	background:#337ab7;
 	color:white !important;
+}
+
+.scroll {
+    max-height: 270px;
+    overflow-y: auto;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.card{
+  margin: none;
 }

@@ -23,68 +23,80 @@
         <p class="lead">{{about.description|safe}}</p>
     </div>
     <hr class="container">
-    <div class="container" id="ann">
-        <h3 class="display-6"><u>Announcements</u></h3>
-        <br>
-        <div class="physicianList">
-            <input type='hidden' id='current_page' />
-            <input type='hidden' id='show_per_page' />
-            <ul id="pagingBox">
-                {% for announcement in announcements %}
-               <li>
-                     <div class="card bio" style="border: none">
-                       <div class="card-body">
-                         <h5 class="card-title">{{announcement.title}}</h5>
-                         <hr>
-                         <div class="card-text">
-                           {{announcement.description|safe}}
-               		       {% if announcement.pdf %}
-		                      <a class="nav-link" href="/media/{{announcement.pdf}}">Click for more details</a>
-                           {% endif %}
-                           {% if announcement.youtube %}
-                            {{announcement.youtube|safe}}
-                           {% endif %}
-                          </div>
-                       </div>
-                     </div>
-               </li>
-               {% endfor %}
-            </ul>
-            <div id='page_navigation'></div>
-        </div>
-        <br>
-    </div>
-    <hr class="container">
-    <div class="container" id="news">
-        <h3 class="display-6"><u>News</u></h3>
-        <br>
-        <div class="physicianList2">
-            <input type='hidden' id='current_page2' />
-            <input type='hidden' id='show_per_page2' />
-            <ul id="pagingBox2">
-                {% for new in news %}
-               <li>
-                     <div class="card bio" style="border: none;">
-                       <div class="card-body">
-                         <h5 class="card-title">{{new.title}}</h5>
-                         <hr>
-                         <div class="card-text">
-                           {{new.description|safe}}
-               		       {% if new.pdf %}
-		                      <a class="nav-link" href="/media/{{new.pdf}}">Click for more details</a>
-                           {% endif %}
-                           {% if new.youtube %}
-                            {{new.youtube|safe}}
-                           {% endif %}
-                          </div>
-                     </div>
-               </li>
-               {% endfor %}
-            </ul>
-            <div id='page_navigation2'></div>
-        </div>
-        <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <div id="ann">
+                    <h3 class="display-6"><u>Announcements</u></h3>
+                    <br>
+                    <div class="physicianList">
+                        <input type='hidden' id='current_page' />
+                        <input type='hidden' id='show_per_page' />
+                        <ul id="pagingBox">
+                            {% for announcement in announcements %}
+                           <li>
+                                 <div class="card bio" style="border: none;margin:10px">
+                                   <div class="card-body scroll">
+                                     <h5 class="card-title">{{announcement.title}}</h5>
+                                     <hr>
+                                     <div class="card-text">
+                                       {{announcement.description|safe}}
+                           		       {% if announcement.pdf %}
+            		                      <a class="nav-link" href="/media/{{announcement.pdf}}">Click for more details</a>
+                                       {% endif %}
+                                       {% if announcement.youtube %}
+                                      <div class="ratio ratio-16x9">
+                                          {{announcement.youtube|safe}}
+                                      </div>
 
+                                       {% endif %}
+                                      </div>
+                                   </div>
+                                 </div>
+                           </li>
+                           {% endfor %}
+                        </ul>
+                        <div id='page_navigation'></div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <div class="col-md-6 text-center">
+                <div id="news">
+                    <h3 class="display-6"><u>News</u></h3>
+                    <br>
+                    <div class="physicianList2">
+                        <input type='hidden' id='current_page2' />
+                        <input type='hidden' id='show_per_page2' />
+                        <ul id="pagingBox2">
+                            {% for new in news %}
+                           <li>
+                                 <div class="card bio" style="border: none;margin:10px">
+                                   <div class="card-body scroll">
+                                     <h5 class="card-title">{{new.title}}</h5>
+                                     <hr>
+                                     <div class="card-text">
+                                       {{new.description|safe}}
+                           		       {% if new.pdf %}
+            		                      <a class="nav-link" href="/media/{{new.pdf}}" rel="noopener noreferrer nofollow", target="_blank">Click for more details</a>
+                                       {% endif %}
+                                       {% if new.youtube %}
+                                       <div class="ratio ratio-16x9">
+                                           {{new.youtube|safe}}
+                                       </div>
+                                       {% endif %}
+                                      </div>
+                                    </div>
+                                </div>
+                           </li>
+                           {% endfor %}
+                        </ul>
+                        <div id='page_navigation2'></div>
+                      <br>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 {% endblock %}

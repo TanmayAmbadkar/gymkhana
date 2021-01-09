@@ -2,7 +2,7 @@ jQuery(document).ready(function () {
 
 		//Pagination JS
 		//how much items per page to show
-		var show_per_page2 = 3;
+		var show_per_page2 = 2;
 		//getting the amount of elements inside pagingBox2 div
 		var number_of_items = $('#pagingBox2').children().size();
 		//calculate the number of pages we are going to have

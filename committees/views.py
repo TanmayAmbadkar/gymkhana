@@ -56,14 +56,6 @@ class CommitteeDetailView(DetailView):
         except Club.DoesNotExist:
             context['clubs'] = None
         #context['clubs'] = Club.objects.filter(committee = committee).order_by("slug")
-
-        try:
-            member = Member.objects.get(committee = committee)
-            df = pd.read_csv(member.current)
-            context['curr_mem'] = get_current_members(df)
-        except Member.DoesNotExist:
-            context['curr_mem'] = None
-
         #member = Member.objects.get(committee = committee)
         #df = pd.read_csv(member.current)
         #context['curr_mem'] = get_current_members(df)
@@ -85,6 +77,22 @@ class PastMembersView(DetailView):
 
         context['members'] = get_past_members(df)
 
+        return context
+
+class CurrentMembersView(DetailView):
+
+    model = Committee
+    template_name = 'committees/current_members.html'
+
+    def get_context_data(self, **kwargs):
+
+        context = super(CurrentMembersView, self).get_context_data(**kwargs)
+
+        committee = Committee.objects.get(pk = self.kwargs['pk'])
+        member = Member.objects.get(committee = committee)
+        df = pd.read_csv(member.current)
+
+        context['members'] = get_current_members(df)
         return context
 
 def get_current_members(df):

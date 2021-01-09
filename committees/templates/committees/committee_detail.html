@@ -72,8 +72,8 @@
                     </div>
                 </div>
                 {% endif %}
-		<br>
                 {% if vpres %}
+		        <br>
                 <div class="bio text-center" style="border: 1px solid #e6e6e6;padding:1rem;margin:2rem">
 
                     <img src="/media/{{vpres.photo}}" class="rounded-circle" width=100 height=100 style="margin-top:-4rem" alt="vicepres">
@@ -89,6 +89,9 @@
                 </div>
                 {% endif %}
                 <div style="text-align:center">
+                    <a class="nav-link" aria-current="page" href={% url 'curr_members' pk=committee.pk %}>Current Members</a>
+                </div>
+                <div style="text-align:center">
                     <a class="nav-link" aria-current="page" href={% url 'past_members' pk=committee.pk %}>Past Members</a>
                 </div>
             </div>
@@ -96,51 +99,37 @@
                 <h1 class="display-6"><u>About</u></h1>
                 <p>{{committee.about|safe}}</p>
                 <hr>
-                {% if committee.achievement %}
-		<h1 class="display-6"><u>Achievements</u></h1>
-                <p>{{committee.achievement|safe}}</p>
-                <hr>
- 		{% endif %}
-                <!-- h1 class="display-6"><u>Members of the Committee</u></h1>
+		        <h1 class="display-6"><u>Major Events</u></h1>
+                The Committee organises the following events in an academic year
                 <br>
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Name</th>
-                      <th scope="col">Batch</th>
-                      <th scope="col">Position</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                      {% for mem in curr_mem %}
-                      <tr>
-                        <th scope="row">{{mem.serial}}</th>
-                        <td>{{mem.name}}</td>
-                        <td>{{mem.batch}}</td>
-                        <td>{{mem.position}}</td>
-                      </tr>
-                      {% endfor %}
-                  </tbody>
-                </table -->
-		<h1 class="display-6"><u>Events</u></h1>
-            The Committee organises the following events in an academic year
-            <br>
-            <div class="row">
-                {% for event in events %}
+                <div class="row">
+                  {% for event in events %}
                     <div class="col-md-6">
                         <div class="bio text-center" style="border: 1px solid #e6e6e6;padding:1rem;margin:2rem">
                             <img src="/media/{{event.logo}}" class="rounded-circle" width=auto height="100" alt="eventlogo">
                             <div class="bio-body">
-                                <h4>{{event.name}}</h4>
-                                <p>{{event.description|safe}}</p>
+                                <button class="btn btn-link" style="text-decoration:none;border:none" data-bs-toggle="collapse" data-bs-target="#{{event.name.0}}{{event.pk}}" aria-expanded="false" aria-controls="{{event.name.0}}{{event.pk}}">
+                                    <h4>{{event.name}}</h4>
+                                </button>
+                            </div>
+                            <div id="{{event.name.0}}{{event.pk}}" class="collapse" >
+                              <div class="card-body">
+                                  {{event.description|safe}}
+                              </div>
                             </div>
                         </div>
                     </div>
-                {% endfor %}
-          </div>
+                 {% endfor %}
+              </div>
+
             </div>
-	    
+        {% if committee.achievement %}
+
+          <hr>
+          <h1 class="display-6"><u>Achievements</u></h1>
+          <p >{{committee.achievement|safe}}</p>
+          <hr>
+        {% endif %}
 	    {% if clubs %}
             <h1 class="display-6"><u>Clubs under the committee</u></h1>
             <div class="row">
@@ -156,26 +145,8 @@
                     </div>
                 {% endfor %}
             </div>
-            <hr>
             {% endif %}
-            <!-- h1 class="display-6"><u>Events</u></h1>
-            The Committee organises the following events in an academic year
-            <br>
-            <div class="row">
-                {% for event in events %}
-                    <div class="col-md-6">
-                        <div class="bio text-center" style="border: 1px solid #e6e6e6;padding:1rem;margin:2rem">
-                            <img src="/media/{{event.logo}}" class="rounded-circle" width=auto height="150" alt="eventlogo">
-                            <div class="bio-body">
-                                <h4>{{event.name}}</h4>
-                                <p>{{event.description|safe}}</p>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-          </div-->
         </div>
-        <hr>
         <h1 class="display-6"><u>Photos</u></h1>
         <br>
         <div class="card-group">

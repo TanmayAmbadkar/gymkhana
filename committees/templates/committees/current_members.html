@@ -1,0 +1,29 @@
+{% extends "homepage/base.html" %}
+{%  load static %}
+
+{% block main %}
+<div class="container">
+    <h1 class="display-4">{{committee.name}}</h1>
+    <hr>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Batch</th>
+          <th scope="col">Position</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for mem in members %}
+          <tr>
+            <th scope="row">{{mem.serial}}</th>
+            <td>{{mem.name}}</td>
+            <td>{{mem.batch}}</td>
+            <td>{{mem.position}}</td>
+          </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+</div>
+{% endblock %}

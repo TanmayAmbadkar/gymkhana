@@ -12,7 +12,7 @@
 <div class="container">
         <section class="wrapper" style="background-image: url({{main_image.url}});">
             <div class="divider">
-                <h1>Student Gymkhana | IIIT Vadodara</h1>
+                <h1>Student Activities | IIIT Vadodara</h1>
             </div>
         </section>
     </div>
@@ -36,10 +36,15 @@
                        <div class="card-body">
                          <h5 class="card-title">{{announcement.title}}</h5>
                          <hr>
-                         <div class="card-text">{{announcement.description|safe}}</div>
-               		 {% if announcement.pdf %}
-			    <a class="nav-link" href="/media/{{announcement.pdf}}">Click for more details</a>
- 			 {% endif %}
+                         <div class="card-text">
+                           {{announcement.description|safe}}
+               		       {% if announcement.pdf %}
+		                      <a class="nav-link" href="/media/{{announcement.pdf}}">Click for more details</a>
+                           {% endif %}
+                           {% if announcement.youtube %}
+                            {{announcement.youtube|safe}}
+                           {% endif %}
+                          </div>
                        </div>
                      </div>
                </li>
@@ -59,15 +64,19 @@
             <ul id="pagingBox2">
                 {% for new in news %}
                <li>
-                     <div class="card bio" style="border: none">
+                     <div class="card bio" style="border: none;">
                        <div class="card-body">
                          <h5 class="card-title">{{new.title}}</h5>
                          <hr>
-                         <div class="card-text">{{new.description|safe}}</div>
-                         {% if new.pdf %}
-                            <a class="nav-link" href="/media/{{new.pdf}}">Click for more details</a>
-                         {% endif %}
-                       </div>
+                         <div class="card-text">
+                           {{new.description|safe}}
+               		       {% if new.pdf %}
+		                      <a class="nav-link" href="/media/{{new.pdf}}">Click for more details</a>
+                           {% endif %}
+                           {% if new.youtube %}
+                            {{new.youtube|safe}}
+                           {% endif %}
+                          </div>
                      </div>
                </li>
                {% endfor %}

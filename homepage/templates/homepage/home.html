@@ -4,9 +4,7 @@
 {% block css %}
     <link rel="stylesheet" href={% static "css/homepage.css" %}>
     <link rel="stylesheet" href={% static "css/new.css" %}>
-    <script type="text/javascript" src={% static "js/site.js" %}></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-
+    <!-- link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/-->
     {# <script type="text/javascript" src = {% static "js/clock.js" %}></script> #}
 {% endblock %}
 
@@ -39,6 +37,9 @@
                          <h5 class="card-title">{{announcement.title}}</h5>
                          <hr>
                          <div class="card-text">{{announcement.description|safe}}</div>
+               		 {% if announcement.pdf %}
+			    <a class="nav-link" href="/media/{{announcement.pdf}}">Click for more details</a>
+ 			 {% endif %}
                        </div>
                      </div>
                </li>
@@ -63,6 +64,9 @@
                          <h5 class="card-title">{{new.title}}</h5>
                          <hr>
                          <div class="card-text">{{new.description|safe}}</div>
+                         {% if new.pdf %}
+                            <a class="nav-link" href="/media/{{new.pdf}}">Click for more details</a>
+                         {% endif %}
                        </div>
                      </div>
                </li>
@@ -78,7 +82,8 @@
 
 {% block js %}
 
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<!-- script src="https://code.jquery.com/jquery-1.12.4.min.js"></script-->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 <script type="text/javascript" src = {% static "js/new.js" %}></script>
 <script type="text/javascript" src = {% static "js/new1.js" %}></script>
 {% endblock %}

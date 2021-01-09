@@ -2,6 +2,13 @@
 {%  load static %}
 
 {% block main %}
+<style>
+@media (min-width: 992px) {
+  .modal-dialog {
+    max-width: 60%;
+  }
+}
+</style>
 <div class="container">
     <br>
     {% for event in events %}

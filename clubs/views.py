@@ -21,11 +21,32 @@ class ClubDetailView(DetailView):
         context = super(ClubDetailView, self).get_context_data(**kwargs)
         club = Club.objects.get(pk = self.kwargs['pk'])
         context['club'] = club
-        context['events'] = ClubEvent.objects.filter(club = club)
-        context['photos'] = Photos.objects.get(club = club)
-        context['carousel'] = CarouselPhotos.objects.get(club = club)
-        context['sec'] = Secretary.objects.get(club = club)
-        context['jsec'] = JointSecretary.objects.get(club = club)
+        #context['events'] = ClubEvent.objects.filter(club = club)
+        #context['photos'] = Photos.objects.get(club = club)
+        #context['carousel'] = CarouselPhotos.objects.get(club = club)
+        try:
+            context['carousel'] = CarouselPhotos.objects.get(club=club)
+        except CarouselPhotos.DoesNotExist:
+            context['carousel'] = None
+        try:
+            context['photos'] = Photos.objects.get(club=club)
+        except Photos.DoesNotExist:
+            context['photos'] = None
+        try:
+            context['events'] = ClubEvent.objects.filter(club=club)
+        except ClubEvent.DoesNotExist:
+            context['events'] = None
+        #context['sec'] = Secretary.objects.get(club = club)
+        #context['jsec'] = JointSecretary.objects.get(club = club)
+        try:
+            context['sec'] = Secretary.objects.get(club=club)
+        except Secretary.DoesNotExist:
+            context['sec'] = None
+
+        try:
+            context['jsec'] = JointSecretary.objects.get(club=club)
+        except JointSecretary.DoesNotExist:
+            context['jsec'] = None
 
         return context
 

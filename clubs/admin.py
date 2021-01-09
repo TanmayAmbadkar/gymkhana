@@ -22,7 +22,6 @@ class ClubAdmin(admin.ModelAdmin):
         form = super(ClubAdmin, self).get_form(request, obj, **kwargs)
         return form
 
-
 class FieldsAdmin(admin.ModelAdmin):
 
     def get_queryset(self, request):
@@ -33,6 +32,21 @@ class FieldsAdmin(admin.ModelAdmin):
 
         club = Club.objects.get(user=request.user)
         return qs.filter(club = club)
+
+    def get_form(self, request, obj=None, **kwargs):
+        if request.user.is_superuser:
+            return super(FieldsAdmin, self).get_form(request, obj, **kwargs)
+
+        self.exclude = ('club', )
+        form = super(FieldsAdmin, self).get_form(request, obj, **kwargs)
+        return form
+
+    def save_model(self, request, obj, form, change):
+
+        club = Club.objects.get(user=request.user)
+        obj.club = club
+        super().save_model(request, obj, form, change)
+
 
 admin.site.register(Club, ClubAdmin)
 admin.site.register(ClubEvent, FieldsAdmin)

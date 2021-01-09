@@ -35,12 +35,27 @@ class FieldsAdmin(admin.ModelAdmin):
         print(committee)
         return qs.filter(committee=committee)
 
+    def get_form(self, request, obj=None, **kwargs):
+        if request.user.is_superuser:
+            return super(FieldsAdmin, self).get_form(request, obj, **kwargs)
+
+        self.exclude = ('committee', )
+        form = super(FieldsAdmin, self).get_form(request, obj, **kwargs)
+        return form
+
+    def save_model(self, request, obj, form, change):
+
+        committee = Committee.objects.get(user=request.user)
+        obj.committee = committee
+        super().save_model(request, obj, form, change)
+
 
 admin.site.register(Committee, CommitteeAdmin)
 admin.site.register(CommitteeEvent, FieldsAdmin)
 admin.site.register(Photos, FieldsAdmin)
 admin.site.register(CarouselPhotos, FieldsAdmin)
 admin.site.register(President, FieldsAdmin)
+admin.site.register(VicePresident, FieldsAdmin)
 admin.site.register(Member, FieldsAdmin)
 admin.site.register(PIC, FieldsAdmin)
 admin.site.register(CalendarEvent, FieldsAdmin)

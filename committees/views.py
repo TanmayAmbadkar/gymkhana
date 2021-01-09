@@ -23,19 +23,50 @@ class CommitteeDetailView(DetailView):
         context = super(CommitteeDetailView, self).get_context_data(**kwargs)
         committee = Committee.objects.get(pk = self.kwargs['pk'])
         context['Committee'] = committee
-        context['events'] = CommitteeEvent.objects.filter(committee = committee)
-        context['pic'] = PIC.objects.get(committee=committee)
-        context['photos'] = Photos.objects.get(committee = committee)
-        context['carousel'] = CarouselPhotos.objects.get(committee = committee)
+        #context['events'] = CommitteeEvent.objects.filter(committee = committee)
+        #context['pic'] = PIC.objects.get(committee=committee)
+        #context['photos'] = Photos.objects.get(committee = committee)
+        #context['carousel'] = CarouselPhotos.objects.get(committee = committee)
+        try:
+            context['events'] = CommitteeEvent.objects.filter(committee = committee)
+        except CommitteeEvent.DoesNotExist:
+            context['events'] = None
+        try:
+            context['pic'] = PIC.objects.get(committee = committee)
+        except PIC.DoesNotExist:
+            context['pic'] = None
+        try:
+            context['photos'] = Photos.objects.get(committee = committee)
+        except Photos.DoesNotExist:
+            context['photos'] = None
+        try:
+            context['carousel'] = CarouselPhotos.objects.get(committee = committee)
+        except CarouselPhotos.DoesNotExist:
+            context['carousel'] = None
         try:
             context['president'] = President.objects.get(committee = committee)
         except President.DoesNotExist:
             context['president'] = None
-        context['clubs'] = Club.objects.filter(committee = committee)
+        try:
+            context['vpres'] = VicePresident.objects.get(committee = committee)
+        except VicePresident.DoesNotExist:
+            context['vpres'] = None
+        try:
+            context['clubs'] = Club.objects.filter(committee = committee).order_by("slug")
+        except Club.DoesNotExist:
+            context['clubs'] = None
+        #context['clubs'] = Club.objects.filter(committee = committee).order_by("slug")
 
-        member = Member.objects.get(committee = committee)
-        df = pd.read_csv(member.current)
-        context['curr_mem'] = get_current_members(df)
+        try:
+            member = Member.objects.get(committee = committee)
+            df = pd.read_csv(member.current)
+            context['curr_mem'] = get_current_members(df)
+        except Member.DoesNotExist:
+            context['curr_mem'] = None
+
+        #member = Member.objects.get(committee = committee)
+        #df = pd.read_csv(member.current)
+        #context['curr_mem'] = get_current_members(df)
 
         return context
 

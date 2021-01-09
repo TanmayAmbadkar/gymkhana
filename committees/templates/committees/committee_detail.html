@@ -3,17 +3,18 @@
 
 {% block main %}
 <main>
+{%if carousel %}
     <div class="container">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="/media/{{carousel.photo1}}" class="d-block w-100" alt="..." height="400" style="object-fit: cover;">
+                <img src="/media/{{carousel.photo1}}" class="d-block w-100" alt="carousel1" height="400" style="object-fit: cover;">
               </div>
               <div class="carousel-item">
-                <img src="/media/{{carousel.photo2}}" class="d-block w-100" alt="..." height="400" style="object-fit: cover;">
+                <img src="/media/{{carousel.photo2}}" class="d-block w-100" alt="carousel2" height="400" style="object-fit: cover;">
               </div>
               <div class="carousel-item">
-                <img src="/media/{{carousel.photo3}}" class="d-block w-100" alt="..." height="400" style="object-fit: cover;">
+                <img src="/media/{{carousel.photo3}}" class="d-block w-100" alt="carousel3" height="400" style="object-fit: cover;">
               </div>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
@@ -26,6 +27,7 @@
           </a>
         </div>
     </div>
+{% endif %}
     <br>
     <br>
     <div class="container" style="padding-left:2rem; padding-right:2rem">
@@ -33,7 +35,7 @@
             <div class="col-lg-4">
                 <div class="bio text-center" style="border: 1px solid #e6e6e6;padding:1rem;margin:2rem">
 
-                    <img src="/media/{{committee.logo}}" width=auto height=70>
+                    <img src="/media/{{committee.logo}}" width=auto height=70 alt="committee logo">
                     <hr>
                     <div class="bio-body">
                         <h2>{{committee.name}}</h2>
@@ -44,7 +46,7 @@
                 <br>
                 <div class="bio text-center" style="border: 1px solid #e6e6e6;padding:1rem;margin:2rem">
 
-                    <img src="/media/{{pic.photo}}" class="rounded-circle" width=100 height=100 style="margin-top:-4rem">
+                    <img src="/media/{{pic.photo}}" class="rounded-circle" width=100 height=100 style="margin-top:-4rem" alt="prof">
 
                     <div class="bio-body">
                         <h2>{{pic.name}}</h2>
@@ -58,7 +60,7 @@
                 {% if president %}
                 <div class="bio text-center" style="border: 1px solid #e6e6e6;padding:1rem;margin:2rem">
 
-                    <img src="/media/{{president.photo}}" class="rounded-circle" width=100 height=100 style="margin-top:-4rem">
+                    <img src="/media/{{president.photo}}" class="rounded-circle" width=100 height=100 style="margin-top:-4rem" alt="pred">
 
                     <div class="bio-body">
                         <h2>{{president.name}}</h2>
@@ -66,6 +68,22 @@
                         <p class="social">
                             <a href="{{president.linkedin}}" rel="noreferrer" target="_blank" class="p-2"><span class="fa fa-linkedin"></span></a>
                             <a href="{{president.github}}" rel="noreferrer" target="_blank" class="p-2"><span class="fa fa-github"></span></a>
+                        </p>
+                    </div>
+                </div>
+                {% endif %}
+		<br>
+                {% if vpres %}
+                <div class="bio text-center" style="border: 1px solid #e6e6e6;padding:1rem;margin:2rem">
+
+                    <img src="/media/{{vpres.photo}}" class="rounded-circle" width=100 height=100 style="margin-top:-4rem" alt="vicepres">
+
+                    <div class="bio-body">
+                        <h2>{{vpres.name}}</h2>
+                        <p>Vice President</p>
+                        <p class="social">
+                            <a href="{{vpres.linkedin}}" rel="noreferrer" target="_blank" class="p-2"><span class="fa fa-linkedin"></span></a>
+                            <a href="{{vpres.github}}" rel="noreferrer" target="_blank" class="p-2"><span class="fa fa-github"></span></a>
                         </p>
                     </div>
                 </div>
@@ -78,7 +96,12 @@
                 <h1 class="display-6"><u>About</u></h1>
                 <p>{{committee.about|safe}}</p>
                 <hr>
-                <h1 class="display-6"><u>Members of the Committee</u></h1>
+                {% if committee.achievement %}
+		<h1 class="display-6"><u>Achievements</u></h1>
+                <p>{{committee.achievement|safe}}</p>
+                <hr>
+ 		{% endif %}
+                <!-- h1 class="display-6"><u>Members of the Committee</u></h1>
                 <br>
                 <table class="table">
                   <thead>
@@ -99,7 +122,23 @@
                       </tr>
                       {% endfor %}
                   </tbody>
-                </table>
+                </table -->
+		<h1 class="display-6"><u>Events</u></h1>
+            The Committee organises the following events in an academic year
+            <br>
+            <div class="row">
+                {% for event in events %}
+                    <div class="col-md-6">
+                        <div class="bio text-center" style="border: 1px solid #e6e6e6;padding:1rem;margin:2rem">
+                            <img src="/media/{{event.logo}}" class="rounded-circle" width=auto height="100" alt="eventlogo">
+                            <div class="bio-body">
+                                <h4>{{event.name}}</h4>
+                                <p>{{event.description|safe}}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+          </div>
             </div>
 	    
 	    {% if clubs %}
@@ -108,10 +147,10 @@
                 {% for club in clubs %}
                     <div class="col-md-6">
                         <div class="bio text-center" style="border: 1px solid #e6e6e6;padding:1rem;margin:2rem">
-                            <img src="/media/{{club.logo}}" class="rounded-circle" height="150" width=auto >
+                            <img src="/media/{{club.logo}}" height="150" width=auto alt="clublogo">
                             <hr>
                             <div class="bio-body">
-                                <h4><a href={% url 'club_detail' pk=club.pk %}>{{club.name}}</a></h4>
+                                <h4><a href={% url 'club_detail' pk=club.pk %} style="text-decoration: none;">{{club.name}}</a></h4>
                             </div>
                         </div>
                     </div>
@@ -119,65 +158,65 @@
             </div>
             <hr>
             {% endif %}
-            <h1 class="display-6"><u>Events</u></h1>
+            <!-- h1 class="display-6"><u>Events</u></h1>
             The Committee organises the following events in an academic year
             <br>
             <div class="row">
                 {% for event in events %}
                     <div class="col-md-6">
                         <div class="bio text-center" style="border: 1px solid #e6e6e6;padding:1rem;margin:2rem">
-                            <img src="/media/{{event.logo}}" class="rounded-circle" width=150 height=auto>
+                            <img src="/media/{{event.logo}}" class="rounded-circle" width=auto height="150" alt="eventlogo">
                             <div class="bio-body">
                                 <h4>{{event.name}}</h4>
-                                <p>{{event.description}}</p>
+                                <p>{{event.description|safe}}</p>
                             </div>
                         </div>
                     </div>
                 {% endfor %}
-          </div>
+          </div-->
         </div>
         <hr>
         <h1 class="display-6"><u>Photos</u></h1>
         <br>
         <div class="card-group">
           <div class="card">
-            <img src="/media/{{photos.photo1}}" class="card-img-top" alt="..." height="250" style="object-fit: cover;">
+            <img src="/media/{{photos.photo1}}" class="card-img-top" alt="photo1" height="250" style="object-fit: cover;">
             <p>{{photos.caption1}}</p>
           </div>
           <div class="card">
-            <img src="/media/{{photos.photo2}}" class="card-img-top" alt="..." height="250" style="object-fit: cover;">
+            <img src="/media/{{photos.photo2}}" class="card-img-top" alt="photo2" height="250" style="object-fit: cover;">
             <p>{{photos.caption2}}</p>
           </div>
           <div class="card">
-            <img src="/media/{{photos.photo3}}" class="card-img-top" alt="..." height="250" style="object-fit: cover;">
+            <img src="/media/{{photos.photo3}}" class="card-img-top" alt="photo3" height="250" style="object-fit: cover;">
             <p>{{photos.caption3}}</p>
           </div>
         </div>
         <div class="card-group">
           <div class="card">
-            <img src="/media/{{photos.photo4}}" class="card-img-top" alt="..." height="250" style="object-fit: cover;">
+            <img src="/media/{{photos.photo4}}" class="card-img-top" alt="photo4" height="250" style="object-fit: cover;">
             <p>{{photos.caption4}}</p>
           </div>
           <div class="card">
-            <img src="/media/{{photos.photo5}}" class="card-img-top" alt="..." height="250" style="object-fit: cover;">
+            <img src="/media/{{photos.photo5}}" class="card-img-top" alt="photo5" height="250" style="object-fit: cover;">
             <p>{{photos.caption5}}</p>
           </div>
           <div class="card">
-            <img src="/media/{{photos.photo6}}" class="card-img-top" alt="..." height="250" style="object-fit: cover;">
+            <img src="/media/{{photos.photo6}}" class="card-img-top" alt="photo6" height="250" style="object-fit: cover;">
             <p>{{photos.caption6}}</p>
           </div>
         </div>
         <div class="card-group">
           <div class="card">
-            <img src="/media/{{photos.photo7}}" class="card-img-top" alt="..." height="250" style="object-fit: cover;">
+            <img src="/media/{{photos.photo7}}" class="card-img-top" alt="photo7" height="250" style="object-fit: cover;">
             <p>{{photos.caption7}}</p>
           </div>
           <div class="card">
-            <img src="/media/{{photos.photo8}}" class="card-img-top" alt="..." height="250" style="object-fit: cover;">
+            <img src="/media/{{photos.photo8}}" class="card-img-top" alt="photo8" height="250" style="object-fit: cover;">
             <p>{{photos.caption8}}</p>
           </div>
           <div class="card">
-            <img src="/media/{{photos.photo9}}" class="card-img-top" alt="..." height="250" style="object-fit: cover;">
+            <img src="/media/{{photos.photo9}}" class="card-img-top" alt="photo9" height="250" style="object-fit: cover;">
             <p>{{photos.caption9}}</p>
           </div>
         </div>

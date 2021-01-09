@@ -20,8 +20,7 @@ def get_dates(request):
         if date not in globalEventObject:
             globalEventObject[date] = {}
 
-        globalEventObject[date][event.name+" start"] = event.description
-
+        date1 = date
         weekday = weekdays[event.end_date.weekday()]
         month = event.end_date.strftime("%b")
         year,day = str(event.end_date).split('-')[0], str(event.end_date).split('-')[2]
@@ -30,7 +29,13 @@ def get_dates(request):
         if date not in globalEventObject:
             globalEventObject[date] = {}
 
-        globalEventObject[date][event.name+" end"] = event.description
+        if date1 != date:
+            globalEventObject[date1][event.name+" start"] = event.description
+            globalEventObject[date][event.name+" end"] = event.description
+
+        else:
+            globalEventObject[date][event.name] = event.description
+
 
     for event in comevents:
         weekday = weekdays[event.start_date.weekday()]
@@ -41,8 +46,7 @@ def get_dates(request):
         if date not in globalEventObject:
             globalEventObject[date] = {}
 
-        globalEventObject[date][event.name+" start"] = event.description
-
+        date1 = date
         weekday = weekdays[event.end_date.weekday()]
         month = event.end_date.strftime("%b")
         year,day = str(event.end_date).split('-')[0], str(event.end_date).split('-')[2]
@@ -51,7 +55,12 @@ def get_dates(request):
         if date not in globalEventObject:
             globalEventObject[date] = {}
 
-        globalEventObject[date][event.name+" end"] = event.description
+        if date1 != date:
+            globalEventObject[date1][event.name+" start"] = event.description
+            globalEventObject[date][event.name+" end"] = event.description
+
+        else:
+            globalEventObject[date][event.name] = event.description
 
 
     return JsonResponse(globalEventObject)

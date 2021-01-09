@@ -10,6 +10,7 @@ class Committee(models.Model):
     slug = models.SlugField(max_length=255, primary_key=True)
     logo = models.ImageField(upload_to="logos/", null = True, blank=True)
     about = models.TextField()
+    achievement = models.TextField(blank=True, null=True)
     mail = models.EmailField(null = True, blank=True)
 
     def __str__(self):
@@ -71,6 +72,17 @@ class CarouselPhotos(models.Model):
         return self.committee.name
 
 class President(models.Model):
+
+    name = models.CharField(max_length=255)
+    github = models.URLField(blank=True)
+    linkedin = models.URLField(blank=True)
+    committee = models.OneToOneField(Committee, on_delete=models.CASCADE)
+    photo = models.ImageField(upload_to="profile_photo/", null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.name} {self.committee.name}"
+
+class VicePresident(models.Model):
 
     name = models.CharField(max_length=255)
     github = models.URLField(blank=True)

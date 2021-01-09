@@ -16,6 +16,8 @@ class Club(models.Model):
     instagram = models.URLField(null = True, blank=True)
     facebook = models.URLField(null = True, blank=True)
     twitter = models.URLField(null = True, blank=True)
+    dribble = models.URLField(null = True, blank=True)
+    youtube = models.URLField(null = True, blank=True)
     committee = models.ForeignKey(Committee, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
@@ -71,6 +73,7 @@ class Secretary(models.Model):
     name = models.CharField(max_length=255)
     github = models.URLField(blank=True)
     linkedin = models.URLField(blank=True)
+    dribble = models.URLField(null = True, blank=True)
     club = models.OneToOneField(Club, on_delete=models.CASCADE)
     photo = models.ImageField(upload_to="profile_photo/", null=True, blank=True)
 
@@ -82,6 +85,7 @@ class JointSecretary(models.Model):
     name = models.CharField(max_length=255)
     github = models.URLField(blank=True)
     linkedin = models.URLField(blank=True)
+    dribble = models.URLField(null = True, blank=True)
     club = models.OneToOneField(Club, on_delete=models.CASCADE)
     photo = models.ImageField(upload_to="profile_photo/", null=True, blank=True)
 

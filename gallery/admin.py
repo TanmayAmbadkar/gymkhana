@@ -18,19 +18,25 @@ class EventAdmin(admin.ModelAdmin):
         elif Club.objects.get(user = request.user):
             return qs.filter(club=Club.objects.get(user = request.user))
 
-
-
     def get_form(self, request, obj=None, **kwargs):
         if request.user.is_superuser:
             return super(EventAdmin, self).get_form(request, obj, **kwargs)
 
         if Committee.objects.get(user = request.user):
-            self.exclude = ('club', )
+            self.exclude = ('club', 'committee')
 
         elif Club.objects.get(user = request.user):
-            self.exclude = ('committee', )
+            self.exclude = ('committee', 'club')
         form = super(EventAdmin, self).get_form(request, obj, **kwargs)
         return form
+
+    def save_model(self, request, obj, form, change):
+
+        committee = Committee.objects.get(user=request.user)
+        obj.committee = committee
+        super().save_model(request, obj, form, change)
+
+
 
 admin.site.register(Photo)
 admin.site.register(Event, EventAdmin)

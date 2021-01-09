@@ -31,7 +31,7 @@
     <div class="container" style="padding-left:2rem; padding-right:2rem">
         <div class="row" >
             <div class="col-lg-4">
-                <div class="bio text-center" style="border: 1px solid #e6e6e6;padding:1rem;margin:2rem">
+                <div class="bio text-center">
 
                     <img src="/media/{{club.logo}}" width=auto height=70 alt="clublogo">
                     <hr>
@@ -67,7 +67,7 @@
                 </div>
                 <br>
 {% if sec %}
-                <div class="bio text-center" style="border: 1px solid #e6e6e6;padding:1rem;margin:2rem">
+                <div class="bio text-center">
 
                     <img src="/media/{{sec.photo}}" alt="sec" class="rounded-circle" width=100 height=100 style="margin-top:-4rem">
 
@@ -86,7 +86,7 @@
 {% endif %}
                 <br>
 {% if jsec %}
-                <div class="bio text-center" style="border: 1px solid #e6e6e6;padding:1rem;margin:2rem">
+                <div class="bio text-center">
 
                     <img src="/media/{{jsec.photo}}" alt="jsec" class="rounded-circle" width=100 height=100 style="margin-top:-4rem">
 
@@ -111,10 +111,6 @@
                 <h1 class="display-6"><u>About</u></h1>
                 <p>{{club.about|safe}}</p>
                 <hr>
-                <h1 class="display-6"><u>Achievements</u></h1>
-                <p>{{club.achievements|safe}}</p>
-
-                <hr>
                 <h1 class="display-6"><u>Events</u></h1>
                 The Club organises the following events in an academic year
                 <br>
@@ -131,6 +127,9 @@
                         </div>
                     {% endfor %}
                 </div>
+                <hr>
+                <h1 class="display-6"><u>Achievements</u></h1>
+                <p>{{club.achievements|safe}}</p>
             </div>
         </div>
         <hr>
@@ -138,43 +137,43 @@
         <br>
         <div class="card-group">
           <div class="card">
-            <img src="/media/{{photos.photo1}}" class="card-img-top" alt="photo1" height="250" style="object-fit: cover;">
+            <img src="/media/{{photos.photo1}}" class="card-img-top" alt="photo1" height="250">
             <p>{{photos.caption1}}</p>
           </div>
           <div class="card">
-            <img src="/media/{{photos.photo2}}" class="card-img-top" alt="photo2" height="250" style="object-fit: cover;">
+            <img src="/media/{{photos.photo2}}" class="card-img-top" alt="photo2" height="250">
             <p>{{photos.caption2}}</p>
 	  </div>
           <div class="card">
-            <img src="/media/{{photos.photo3}}" class="card-img-top" alt="photo3" height="250" style="object-fit: cover;">
+            <img src="/media/{{photos.photo3}}" class="card-img-top" alt="photo3" height="250">
 		<p>{{photos.caption3}}</p>
           </div>
         </div>
         <div class="card-group">
           <div class="card">
-            <img src="/media/{{photos.photo4}}" class="card-img-top" alt="photo4" height="250" style="object-fit: cover;">
+            <img src="/media/{{photos.photo4}}" class="card-img-top" alt="photo4" height="250">
              <p>{{photos.caption4}}</p>
 	</div>
           <div class="card">
-            <img src="/media/{{photos.photo5}}" class="card-img-top" alt="photo5" height="250" style="object-fit: cover;">
+            <img src="/media/{{photos.photo5}}" class="card-img-top" alt="photo5" height="250">
 		<p>{{photos.caption5}}</p>
 	</div>
           <div class="card">
-            <img src="/media/{{photos.photo6}}" class="card-img-top" alt="photo6" height="250" style="object-fit: cover;">
+            <img src="/media/{{photos.photo6}}" class="card-img-top" alt="photo6" height="250">
 		<p>{{photos.caption6}}</p>
           </div>
         </div>
         <div class="card-group">
           <div class="card">
-            <img src="/media/{{photos.photo7}}" class="card-img-top" alt="photo7" height="250" style="object-fit: cover;">
+            <img src="/media/{{photos.photo7}}" class="card-img-top" alt="photo7" height="250">
         	<p>{{photos.caption7}}</p>
 	</div>
           <div class="card">
-            <img src="/media/{{photos.photo8}}" class="card-img-top" alt="photo8" height="250" style="object-fit: cover;">
+            <img src="/media/{{photos.photo8}}" class="card-img-top" alt="photo8" height="250">
         	<p>{{photos.caption8}}</p>
 	</div>
           <div class="card">
-            <img src="/media/{{photos.photo9}}" class="card-img-top" alt="photo9" height="250" style="object-fit: cover;">
+            <img src="/media/{{photos.photo9}}" class="card-img-top" alt="photo9" height="250">
         	<p>{{photos.caption9}}</p>
 	</div>
         </div>

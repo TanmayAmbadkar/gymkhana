@@ -31,6 +31,12 @@ transition: .3s ease-in-out;
     opacity:1;
 }
 
+.bio{
+    border: 1px solid #e6e6e6;
+    padding:1rem;
+    margin:2rem
+}
+
 .bio:hover{
 transition: .3s ease-in-out;
 box-shadow: 0 4px 8px 0 rgba(0, 0, 255, 0.2), 0 6px 20px 0 rgba(0, 0, 255, 0.19);
@@ -63,4 +69,7 @@ max-width:250px;
     padding:0;
     color:#073b88;
     text-decoration:none;
+}
+.card-group .card img{
+    object-fit: cover;
 }

@@ -33,7 +33,7 @@
     <div class="container" style="padding-left:2rem; padding-right:2rem">
         <div class="row" >
             <div class="col-lg-4">
-                <div class="bio text-center" style="border: 1px solid #e6e6e6;padding:1rem;margin:2rem">
+                <div class="bio text-center">
 
                     <img src="/media/{{committee.logo}}" width=auto height=70 alt="committee logo">
                     <hr>
@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <br>
-                <div class="bio text-center" style="border: 1px solid #e6e6e6;padding:1rem;margin:2rem">
+                <div class="bio text-center">
 
                     <img src="/media/{{pic.photo}}" class="rounded-circle" width=100 height=100 style="margin-top:-4rem" alt="prof">
 
@@ -58,7 +58,7 @@
                 </div>
                 <br>
                 {% if president %}
-                <div class="bio text-center" style="border: 1px solid #e6e6e6;padding:1rem;margin:2rem">
+                <div class="bio text-center">
 
                     <img src="/media/{{president.photo}}" class="rounded-circle" width=100 height=100 style="margin-top:-4rem" alt="pred">
 
@@ -74,7 +74,7 @@
                 {% endif %}
                 {% if vpres %}
 		        <br>
-                <div class="bio text-center" style="border: 1px solid #e6e6e6;padding:1rem;margin:2rem">
+                <div class="bio text-center">
 
                     <img src="/media/{{vpres.photo}}" class="rounded-circle" width=100 height=100 style="margin-top:-4rem" alt="vicepres">
 
@@ -105,7 +105,7 @@
                 <div class="row">
                   {% for event in events %}
                     <div class="col-md-6">
-                        <div class="bio text-center" style="border: 1px solid #e6e6e6;padding:1rem;margin:2rem">
+                        <div class="bio text-center">
                             <img src="/media/{{event.logo}}" class="rounded-circle" width=auto height="100" alt="eventlogo">
                             <div class="bio-body">
                                 <button class="btn btn-link" style="text-decoration:none;border:none" data-bs-toggle="collapse" data-bs-target="#{{event.name.0}}{{event.pk}}" aria-expanded="false" aria-controls="{{event.name.0}}{{event.pk}}">
@@ -135,7 +135,7 @@
             <div class="row">
                 {% for club in clubs %}
                     <div class="col-md-6">
-                        <div class="bio text-center" style="border: 1px solid #e6e6e6;padding:1rem;margin:2rem">
+                        <div class="bio text-center">
                             <img src="/media/{{club.logo}}" height="150" width=auto alt="clublogo">
                             <hr>
                             <div class="bio-body">
@@ -151,43 +151,43 @@
         <br>
         <div class="card-group">
           <div class="card">
-            <img src="/media/{{photos.photo1}}" class="card-img-top" alt="photo1" height="250" style="object-fit: cover;">
+            <img src="/media/{{photos.photo1}}" class="card-img-top" alt="photo1" height="250" >
             <p>{{photos.caption1}}</p>
           </div>
           <div class="card">
-            <img src="/media/{{photos.photo2}}" class="card-img-top" alt="photo2" height="250" style="object-fit: cover;">
+            <img src="/media/{{photos.photo2}}" class="card-img-top" alt="photo2" height="250" >
             <p>{{photos.caption2}}</p>
           </div>
           <div class="card">
-            <img src="/media/{{photos.photo3}}" class="card-img-top" alt="photo3" height="250" style="object-fit: cover;">
+            <img src="/media/{{photos.photo3}}" class="card-img-top" alt="photo3" height="250">
             <p>{{photos.caption3}}</p>
           </div>
         </div>
         <div class="card-group">
           <div class="card">
-            <img src="/media/{{photos.photo4}}" class="card-img-top" alt="photo4" height="250" style="object-fit: cover;">
+            <img src="/media/{{photos.photo4}}" class="card-img-top" alt="photo4" height="250">
             <p>{{photos.caption4}}</p>
           </div>
           <div class="card">
-            <img src="/media/{{photos.photo5}}" class="card-img-top" alt="photo5" height="250" style="object-fit: cover;">
+            <img src="/media/{{photos.photo5}}" class="card-img-top" alt="photo5" height="250">
             <p>{{photos.caption5}}</p>
           </div>
           <div class="card">
-            <img src="/media/{{photos.photo6}}" class="card-img-top" alt="photo6" height="250" style="object-fit: cover;">
+            <img src="/media/{{photos.photo6}}" class="card-img-top" alt="photo6" height="250">
             <p>{{photos.caption6}}</p>
           </div>
         </div>
         <div class="card-group">
           <div class="card">
-            <img src="/media/{{photos.photo7}}" class="card-img-top" alt="photo7" height="250" style="object-fit: cover;">
+            <img src="/media/{{photos.photo7}}" class="card-img-top" alt="photo7" height="250">
             <p>{{photos.caption7}}</p>
           </div>
           <div class="card">
-            <img src="/media/{{photos.photo8}}" class="card-img-top" alt="photo8" height="250" style="object-fit: cover;">
+            <img src="/media/{{photos.photo8}}" class="card-img-top" alt="photo8" height="250">
             <p>{{photos.caption8}}</p>
           </div>
           <div class="card">
-            <img src="/media/{{photos.photo9}}" class="card-img-top" alt="photo9" height="250" style="object-fit: cover;">
+            <img src="/media/{{photos.photo9}}" class="card-img-top" alt="photo9" height="250">
             <p>{{photos.caption9}}</p>
           </div>
         </div>

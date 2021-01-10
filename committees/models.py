@@ -22,7 +22,7 @@ class CommitteeEvent(models.Model):
     committee = models.ForeignKey(Committee, on_delete=models.CASCADE)
     description = models.TextField()
     logo = models.ImageField(upload_to="logos/", null = True, blank=True)
-    
+
     def __str__(self):
         return self.name
 
@@ -98,6 +98,7 @@ class PIC(models.Model):
     committee = models.OneToOneField(Committee, on_delete=models.CASCADE)
     photo = models.ImageField(upload_to="profile_photo/", null=True, blank=True)
     url = models.URLField()
+    email = models.EmailField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.name} {self.committee.name}"

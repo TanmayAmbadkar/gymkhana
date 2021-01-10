@@ -6,6 +6,8 @@
     <link rel="stylesheet" href={% static "css/new.css" %}>
     <!-- link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/-->
     {# <script type="text/javascript" src = {% static "js/clock.js" %}></script> #}
+    
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 {% endblock %}
 
 {% block main %}
@@ -25,7 +27,7 @@
     <hr class="container">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 text-center">
+            <div class="col-md-6 text-center" style="border-right: 1px solid #ccc;">
                 <div id="ann">
                     <h3 class="display-6"><u>Announcements</u></h3>
                     <br>
@@ -46,7 +48,9 @@
                                        {% endif %}
                                        {% if announcement.youtube %}
                                       <div class="ratio ratio-16x9">
-                                          {{announcement.youtube|safe}}
+                                          <div class="youtube-video-place{{announcement.pk}}" data-yt-url={{announcement.youtube}}>
+					     <img src="/media/vid.png" async class="play-youtube-video{{announcement.pk}} img-fluid" style="filter: blur(0px);-webkit-filter: blur(0px);">
+					  </div>
                                       </div>
 
                                        {% endif %}
@@ -81,9 +85,19 @@
             		                      <a class="nav-link" href="/media/{{new.pdf}}" rel="noopener noreferrer nofollow", target="_blank">Click for more details</a>
                                        {% endif %}
                                        {% if new.youtube %}
-                                       <div class="ratio ratio-16x9">
-                                           {{new.youtube|safe}}
-                                       </div>
+					  <div class="ratio ratio-16x9">
+                                            <div class="youtube-video-place_{{announcement.pk}}" data-yt-url={{announcement.youtube}}>
+                                              <img src="/media/vid.png" async class="play-youtube-video_{{announcement.pk}} img-fluid" style="filter: blur(0px);-webkit-filter: blur(0px);">
+                                            </div>
+                                          </div>
+			 		  <script>
+						var video_wrapper = $('.youtube-video-place_{{announcement.pk}}');
+							if(video_wrapper.length){
+						        $('.play-youtube-video_{{announcement.pk}}').on('click', function(){
+					                video_wrapper.html('<div class=ratio ratio-16x9"><iframe allowfullscreen src="' + video_wrapper.data('yt-url') + '"></iframe></div>');
+        						});
+						}
+					</script>
                                        {% endif %}
                                       </div>
                                     </div>
@@ -104,7 +118,15 @@
 {% block js %}
 
 <!-- script src="https://code.jquery.com/jquery-1.12.4.min.js"></script-->
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<!-- script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script-->
 <script type="text/javascript" src = {% static "js/new.js" %}></script>
 <script type="text/javascript" src = {% static "js/new1.js" %}></script>
+<script>
+var video_wrapper = $('.youtube-video-place');
+if(video_wrapper.length){
+	$('.play-youtube-video').on('click', function(){
+		video_wrapper.html('<div class=ratio ratio-16x9"><iframe allowfullscreen src="' + video_wrapper.data('yt-url') + '"></iframe></div>');
+	});
+}
+</script>
 {% endblock %}

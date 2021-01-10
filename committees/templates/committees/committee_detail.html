@@ -35,7 +35,7 @@
             <div class="col-lg-4">
                 <div class="bio text-center">
 
-                    <img src="/media/{{committee.logo}}" width=auto height=70 alt="committee logo">
+                    <img src="/media/{{committee.logo}}" width=auto height=100 alt="committee logo">
                     <hr>
                     <div class="bio-body">
                         <h2>{{committee.name}}</h2>
@@ -99,7 +99,7 @@
                 <h1 class="display-6"><u>About</u></h1>
                 <p>{{committee.about|safe}}</p>
                 <hr>
-		        <h1 class="display-6"><u>Major Events</u></h1>
+		<h1 class="display-6"><u>Major Events</u></h1>
                 The Committee organises the following events in an academic year
                 <br>
                 <div class="row">
@@ -121,15 +121,11 @@
                     </div>
                  {% endfor %}
               </div>
-
+	      {% if committee.achievement %}
+	      <h1 class="display-6"><u>Achievements</u></h1>
+              <p>{{committee.achievement|safe}}</p>
+	      {% endif %}
             </div>
-        {% if committee.achievement %}
-
-          <hr>
-          <h1 class="display-6"><u>Achievements</u></h1>
-          <p >{{committee.achievement|safe}}</p>
-          <hr>
-        {% endif %}
 	    {% if clubs %}
             <h1 class="display-6"><u>Clubs under the committee</u></h1>
             <div class="row">

@@ -17,6 +17,7 @@ for (var i = 0; i < youtube.length; i++) {
     var source = "https://img.youtube.com/vi/"+ youtube[i].dataset.embed +"/mqdefault.jpg";
     var image = new Image();
         image.src = source;
+	image.alt = youtube[i].dataset.embed;
         image.classList.add("img-fluid")
         image.addEventListener( "load", function() {
             youtube[ i ].appendChild( image );

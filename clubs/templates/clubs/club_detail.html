@@ -2,6 +2,13 @@
 {%  load static %}
 
 {% block main %}
+<style>
+@media (min-width: 992px) {
+  .modal-dialog {
+    max-width: 60%;
+  }
+}
+</style>
 <main>
     <div class="container">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -139,7 +146,7 @@
           <div class="card">
             <img src="/media/{{photos.photo1}}" class="card-img-top" alt="..." height="250" data-bs-toggle="modal" data-bs-target="#staticBackdrop1" >
             <p data-bs-toggle="modal" data-bs-target="#staticBackdrop1">{{photos.caption1}}</p>
-            <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" id="staticBackdrop1" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -155,7 +162,7 @@
           <div class="card">
             <img src="/media/{{photos.photo2}}" class="card-img-top" alt="..." height="250" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
             <p data-bs-toggle="modal" data-bs-target="#staticBackdrop2">{{photos.caption2}}</p>
-            <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" id="staticBackdrop2" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -171,7 +178,7 @@
           <div class="card">
             <img src="/media/{{photos.photo3}}" class="card-img-top" alt="..." height="250" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
             <p data-bs-toggle="modal" data-bs-target="#staticBackdrop3">{{photos.caption3}}</p>
-            <div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" id="staticBackdrop3" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -189,7 +196,7 @@
           <div class="card">
             <img src="/media/{{photos.photo4}}" class="card-img-top" alt="..." height="250" data-bs-toggle="modal" data-bs-target="#staticBackdrop4">
             <p data-bs-toggle="modal" data-bs-target="#staticBackdrop4">{{photos.caption4}}</p>
-            <div class="modal fade" id="staticBackdrop4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" id="staticBackdrop4" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -205,7 +212,7 @@
           <div class="card">
             <img src="/media/{{photos.photo5}}" class="card-img-top" alt="..." height="250" data-bs-toggle="modal" data-bs-target="#staticBackdrop5">
             <p data-bs-toggle="modal" data-bs-target="#staticBackdrop5">{{photos.caption5}}</p>
-            <div class="modal fade" id="staticBackdrop5" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" id="staticBackdrop5" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -221,7 +228,7 @@
           <div class="card">
             <img src="/media/{{photos.photo6}}" class="card-img-top" alt="..." height="250" data-bs-toggle="modal" data-bs-target="#staticBackdrop6">
             <p data-bs-toggle="modal" data-bs-target="#staticBackdrop6">{{photos.caption6}}</p>
-            <div class="modal fade" id="staticBackdrop6" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" id="staticBackdrop6" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -239,7 +246,7 @@
           <div class="card">
             <img src="/media/{{photos.photo7}}" class="card-img-top" alt="..." height="250" data-bs-toggle="modal" data-bs-target="#staticBackdrop7">
             <p data-bs-toggle="modal" data-bs-target="#staticBackdrop7">{{photos.caption7}}</p>
-            <div class="modal fade" id="staticBackdrop7" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" id="staticBackdrop7" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -255,7 +262,7 @@
           <div class="card">
             <img src="/media/{{photos.photo8}}" class="card-img-top" alt="..." height="250" data-bs-toggle="modal" data-bs-target="#staticBackdrop8">
             <p  data-bs-toggle="modal" data-bs-target="#staticBackdrop8">{{photos.caption8}}</p>
-            <div class="modal fade" id="staticBackdrop8" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" id="staticBackdrop8" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -271,10 +278,10 @@
           <div class="card">
             <img src="/media/{{photos.photo9}}" class="card-img-top" alt="..." height="250" data-bs-toggle="modal" data-bs-target="#staticBackdrop9">
             <p data-bs-toggle="modal" data-bs-target="#staticBackdrop9">{{photos.caption9}}</p>
-            <div class="modal fade" id="staticBackdrop9" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" id="staticBackdrop9" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
-                    <div class="modal-header">
+		    <div class="modal-header">
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">

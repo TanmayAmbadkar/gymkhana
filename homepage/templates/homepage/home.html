@@ -4,14 +4,10 @@
 {% block css %}
     <link rel="stylesheet" href={% static "css/homepage.css" %}>
     <link rel="stylesheet" href={% static "css/new.css" %}>
-    <!-- link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/-->
-    {# <script type="text/javascript" src = {% static "js/clock.js" %}></script> #}
-    
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 {% endblock %}
 
 {% block main %}
-<div class="container">
+    <div class="container">
         <section class="wrapper" style="background-image: url({{main_image.url}});">
             <div class="divider">
                 <h1>Student Activities | IIIT Vadodara</h1>
@@ -46,13 +42,12 @@
                            		       {% if announcement.pdf %}
             		                      <a class="nav-link" href="/media/{{announcement.pdf}}">Click for more details</a>
                                        {% endif %}
-                                       {% if announcement.youtube %}
-                                      <div class="ratio ratio-16x9">
-                                          <div class="youtube-video-place{{announcement.pk}}" data-yt-url={{announcement.youtube}}>
-					     <img src="/media/vid.png" async class="play-youtube-video{{announcement.pk}} img-fluid" style="filter: blur(0px);-webkit-filter: blur(0px);">
-					  </div>
-                                      </div>
-
+                                       {% if announcement.youtube_id %}
+                                        <div class="ratio ratio-16x9">
+                                            <div class="youtube" data-embed={{announcement.youtube_id}}>
+                                                   <div class="play-button"></div>
+                                            </div>
+                                        </div>
                                        {% endif %}
                                       </div>
                                    </div>
@@ -84,20 +79,12 @@
                            		       {% if new.pdf %}
             		                      <a class="nav-link" href="/media/{{new.pdf}}" rel="noopener noreferrer nofollow", target="_blank">Click for more details</a>
                                        {% endif %}
-                                       {% if new.youtube %}
-					  <div class="ratio ratio-16x9">
-                                            <div class="youtube-video-place_{{announcement.pk}}" data-yt-url={{announcement.youtube}}>
-                                              <img src="/media/vid.png" async class="play-youtube-video_{{announcement.pk}} img-fluid" style="filter: blur(0px);-webkit-filter: blur(0px);">
-                                            </div>
-                                          </div>
-			 		  <script>
-						var video_wrapper = $('.youtube-video-place_{{announcement.pk}}');
-							if(video_wrapper.length){
-						        $('.play-youtube-video_{{announcement.pk}}').on('click', function(){
-					                video_wrapper.html('<div class=ratio ratio-16x9"><iframe allowfullscreen src="' + video_wrapper.data('yt-url') + '"></iframe></div>');
-        						});
-						}
-					</script>
+                                       {% if new.youtube_id %}
+                                       <div class="ratio ratio-16x9">
+                                           <div class="youtube" data-embed={{new.youtube_id}}>
+                                                  <div class="play-button"></div>
+                                           </div>
+                                       </div>
                                        {% endif %}
                                       </div>
                                     </div>
@@ -116,17 +103,9 @@
 {% endblock %}
 
 {% block js %}
-
-<!-- script src="https://code.jquery.com/jquery-1.12.4.min.js"></script-->
-<!-- script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script-->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 <script type="text/javascript" src = {% static "js/new.js" %}></script>
 <script type="text/javascript" src = {% static "js/new1.js" %}></script>
-<script>
-var video_wrapper = $('.youtube-video-place');
-if(video_wrapper.length){
-	$('.play-youtube-video').on('click', function(){
-		video_wrapper.html('<div class=ratio ratio-16x9"><iframe allowfullscreen src="' + video_wrapper.data('yt-url') + '"></iframe></div>');
-	});
-}
+<script src =  {% static "js/main.js" %}></script>
 </script>
 {% endblock %}

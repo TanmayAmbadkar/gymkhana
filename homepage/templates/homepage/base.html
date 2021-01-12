@@ -1,0 +1,118 @@
+{%  load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href= "{% static 'css/style.css' %}">
+    <meta name="description" content="This is the student gymkhana of IIIT Vadodara">
+    {% block css %}
+    {% endblock %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script async defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script async defer src="https://use.fontawesome.com/7b0d763fd3.js"></script>
+    <title>Student Activities | IIITV</title>
+    </head>
+    <body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}"><img src={% static "images/iiitv.jpg" %} width=50 height=50 alt="logo"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href={% url 'home' %}>Home</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="committees" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Committees
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="committees">
+                  {% for committee in committees %}
+                    <li><a class="dropdown-item" href={% url 'committee_detail' pk=committee.pk%}>{{committee.name}}</a></li>
+                  {% endfor %}
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="clubs" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Clubs
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="clubs">
+                  {% for club in clubs_base %}
+                    <li><a class="dropdown-item" href={% url 'club_detail' pk=club.pk%}>{{club.name}}</a></li>
+                  {% endfor %}
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="misc" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Festivals
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="misc">
+                  {% for fest in fests %}
+                    <li><a class="dropdown-item" href={% url 'festival_detail' pk=fest.pk%}>{{fest.name}}</a></li>
+                  {% endfor %}
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Miscellaneous
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href={% url 'gallery'%}>Gallery</a></li>
+                    <li><a class="dropdown-item" href={% url 'calendar'%}>Calendar</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href={% url 'contact' %}>Contacts</a>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main style="min-height: 60vh">
+    {% block main %}
+
+    {% endblock %}
+    </main>
+    <footer class="page-footer font-small pt-4" style="background-color: #aaa;">
+
+      <div class="container-fluid text-center text-md-left">
+        <div class="row">
+	  <div class="col-md-2"></div>
+          <div class="col-md-6">
+            <h5 class="text-uppercase">Student Gymkhana | IIIT Vadodara</h5>
+            <p>The Student Gymkhana of IIIT Vadodara aims at maintaining and providing good extra co-curricular activities to it's students ensuring a perfect balance between their academics & social life through various events conducted by its clubs headed by different Committees. </p>
+          </div>
+          <hr class="clearfix w-100 d-md-none pb-3">
+          <div class="col-md-3 mb-md-0 mb-3">
+            <h5 class="text-uppercase">Links</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href={% url 'home' %} class="foot-link">Home</a>
+              </li>
+              <li>
+                <a href={% url 'calendar' %} class="foot-link">Event Calendar</a>
+              </li>
+              <li>
+                <a href={% url 'gallery' %} class="foot-link">Photo Gallery</a>
+              </li>
+              <li>
+                <a href="http://iitvadodara.ac.in/" class="foot-link">IIIT Vadodara</a>
+              </li>
+            </ul>
+          </div>
+          <hr class="clearfix w-100 d-md-none pb-3">
+        </div>
+      </div>
+      <div class="footer-copyright text-center py-3 dark">
+                Designed and developed by <a href="https://makingcomputerssmart.com/" rel="noreferrer noopener nofollow" target="_blank" class="foot-link">Tanmay Ambadkar</a> & Atishay Jain
+      </div>
+    </footer>
+    {% block js %}
+    {% endblock %}
+  </body>
+</html>

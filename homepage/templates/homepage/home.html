@@ -1,0 +1,111 @@
+{% extends "homepage/base.html" %}
+{%  load static %}
+
+{% block css %}
+    <link rel="stylesheet" href={% static "css/homepage.css" %}>
+    <link rel="stylesheet" href={% static "css/new.css" %}>
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <section class="wrapper" style="background-image: url({{main_image.url}});">
+            <div class="divider">
+                <h1>Student Activities | IIIT Vadodara</h1>
+            </div>
+        </section>
+    </div>
+    <br>
+    <br>
+    <div class="container">
+        <h3 class="display-6"><u>About</u></h3>
+        <p class="lead">{{about.description|safe}}</p>
+    </div>
+    <hr class="container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-center" style="border-right: 1px solid #ccc;">
+                <div id="ann">
+                    <h3 class="display-6"><u>Announcements</u></h3>
+                    <br>
+                    <div class="physicianList">
+                        <input type='hidden' id='current_page' />
+                        <input type='hidden' id='show_per_page' />
+                        <ul id="pagingBox">
+                            {% for announcement in announcements %}
+                           <li>
+                                 <div class="card bio" style="border: none;margin:10px">
+                                   <div class="card-body scroll">
+                                     <h5 class="card-title">{{announcement.title}}</h5>
+                                     <hr>
+                                     <div class="card-text">
+                                       {{announcement.description|safe}}
+                           		       {% if announcement.pdf %}
+            		                      <a class="nav-link" href="/media/{{announcement.pdf}}">Click for more details</a>
+                                       {% endif %}
+                                       {% if announcement.youtube_id %}
+                                        <div class="ratio ratio-16x9">
+                                            <div class="youtube" data-embed={{announcement.youtube_id}}>
+                                                   <div class="play-button"></div>
+                                            </div>
+                                        </div>
+                                       {% endif %}
+                                      </div>
+                                   </div>
+                                 </div>
+                           </li>
+                           {% endfor %}
+                        </ul>
+                        <div id='page_navigation'></div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <div class="col-md-6 text-center">
+                <div id="news">
+                    <h3 class="display-6"><u>News</u></h3>
+                    <br>
+                    <div class="physicianList2">
+                        <input type='hidden' id='current_page2' />
+                        <input type='hidden' id='show_per_page2' />
+                        <ul id="pagingBox2">
+                            {% for new in news %}
+                           <li>
+                                 <div class="card bio" style="border: none;margin:10px">
+                                   <div class="card-body scroll">
+                                     <h5 class="card-title">{{new.title}}</h5>
+                                     <hr>
+                                     <div class="card-text">
+                                       {{new.description|safe}}
+                           		       {% if new.pdf %}
+            		                      <a class="nav-link" href="/media/{{new.pdf}}" rel="noopener noreferrer nofollow", target="_blank">Click for more details</a>
+                                       {% endif %}
+                                       {% if new.youtube_id %}
+                                       <div class="ratio ratio-16x9">
+                                           <div class="youtube" data-embed={{new.youtube_id}}>
+                                                  <div class="play-button"></div>
+                                           </div>
+                                       </div>
+                                       {% endif %}
+                                      </div>
+                                    </div>
+                                </div>
+                           </li>
+                           {% endfor %}
+                        </ul>
+                        <div id='page_navigation2'></div>
+                      <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js %}
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script type="text/javascript" src = {% static "js/new.js" %}></script>
+<script type="text/javascript" src = {% static "js/new1.js" %}></script>
+<script src =  {% static "js/main.js" %}></script>
+</script>
+{% endblock %}

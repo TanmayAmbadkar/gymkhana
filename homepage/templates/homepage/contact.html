@@ -1,0 +1,71 @@
+{% extends "homepage/base.html" %}
+{%  load static %}
+
+{% block main %}
+<hr>
+<div class="text-center">
+    <h1 style="text-center" class="display-3">Contacts for Student Activities</h1>
+</div>
+<hr>
+<div class="container">
+            <h1 class="display-6">Professors In Charge for Committees</h1>
+            <hr>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Committee</th>
+                  <th scope="col">Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for prof in profs %}
+                      <tr>
+                        <td>{{prof.name}}</td>
+                        <td>{{prof.committee.name}}</td>
+                        <td><a href="mailto:{{committee.mail}}" class="p-2">{{prof.email}}</a></td>
+                      </tr>
+                  {% endfor %}
+
+              </tbody>
+            </table>
+            <h1 class="display-6">Committees</h1>
+            <hr>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Committee Name</th>
+                  <th scope="col">Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for committee in committees %}
+                  <tr>
+		    <td>{{committee.name}}</td>
+                    <td><a href="mailto:{{committee.mail}}" class="p-2">{{committee.mail}}</a></td>
+                  </tr>
+                  {% endfor %}
+
+              </tbody>
+            </table>
+            <h1 class="display-6">Clubs</h1>
+            <hr>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Club Name</th>
+                  <th scope="col">Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for club in clubs %}
+                  <tr>
+                    <td>{{club.name}}</td>
+		    <td><a href="mailto:{{club.mail}}" class="p-2">{{club.mail}}</a></td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+            </table>
+
+        </div>
+{% endblock %}

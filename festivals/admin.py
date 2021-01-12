@@ -1,0 +1,55 @@
+from django.contrib import admin
+from festivals.models import *
+# Register your models here.
+
+class FestAdmin(admin.ModelAdmin):
+
+    def get_queryset(self, request):
+
+        qs = super(FestAdmin, self).get_queryset(request)
+        if request.user.is_superuser:
+            return qs
+
+        return qs.filter(user=request.user)
+
+    def get_form(self, request, obj=None, **kwargs):
+        if request.user.is_superuser:
+            return super(FestAdmin, self).get_form(request, obj, **kwargs)
+
+        self.exclude = ('user', 'slug')
+        form = super(FestAdmin, self).get_form(request, obj, **kwargs)
+        return form
+
+    def save_model(self, request, obj, form, change):
+
+        obj.user = request.user
+        super().save_model(request, obj, form, change)
+
+
+class FieldsAdmin(admin.ModelAdmin):
+
+    def get_queryset(self, request):
+
+        qs = super(FieldsAdmin, self).get_queryset(request)
+        if request.user.is_superuser:
+            return qs
+
+        fest = Festival.objects.get(user=request.user)
+        return qs.filter(fest = fest)
+
+    def get_form(self, request, obj=None, **kwargs):
+        if request.user.is_superuser:
+            return super(FieldsAdmin, self).get_form(request, obj, **kwargs)
+
+        self.exclude = ('fest', )
+        form = super(FieldsAdmin, self).get_form(request, obj, **kwargs)
+        return form
+
+    def save_model(self, request, obj, form, change):
+
+        fest = Festival.objects.get(user=request.user)
+        obj.fest = fest
+        super().save_model(request, obj, form, change)
+admin.site.register(Festival, FestAdmin)
+admin.site.register(Photos, FieldsAdmin)
+admin.site.register(CarouselPhotos, FieldsAdmin)

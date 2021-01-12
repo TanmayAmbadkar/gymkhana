@@ -154,6 +154,8 @@ h3,h4,h5 {
 
 .eventCard-description {
    color: grey;
+   overflow-y: auto;
+   height: auto;
 }
 
 .eventCard-mark-wrapper {
@@ -162,7 +164,7 @@ h3,h4,h5 {
    top: 0;
    height: 100%;
    width: 60px;
-   background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 100%);
+   /*background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 100%);*/
 }
 
 .eventCard-mark {
@@ -331,4 +333,23 @@ h3,h4,h5 {
       padding-left: 0;
       padding-right: 0;
    }
+}
+/* width */
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

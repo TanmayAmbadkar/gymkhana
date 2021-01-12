@@ -45,9 +45,14 @@ class FieldsAdmin(admin.ModelAdmin):
 
     def save_model(self, request, obj, form, change):
 
-        committee = Committee.objects.get(user=request.user)
-        obj.committee = committee
-        super().save_model(request, obj, form, change)
+        if request.user.is_superuser:
+            obj.committee = obj.committee
+            super().save_model(request, obj, form, change)
+
+        else:
+            committee = Committee.objects.get(user=request.user)
+            obj.committee = committee
+            super().save_model(request, obj, form, change)
 
 
 admin.site.register(Committee, CommitteeAdmin)

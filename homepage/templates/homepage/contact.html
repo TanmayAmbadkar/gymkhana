@@ -23,7 +23,7 @@
                       <tr>
                         <td>{{prof.name}}</td>
                         <td>{{prof.committee.name}}</td>
-                        <td>{{prof.email}}</td>
+                        <td><a href="mailto:{{committee.mail}}" class="p-2">{{prof.email}}</a></td>
                       </tr>
                   {% endfor %}
 
@@ -41,8 +41,8 @@
               <tbody>
                   {% for committee in committees %}
                   <tr>
-                    <td>{{committee.name}}</td>
-                    <td>{{committee.mail}}</td>
+		    <td>{{committee.name}}</td>
+                    <td><a href="mailto:{{committee.mail}}" class="p-2">{{committee.mail}}</a></td>
                   </tr>
                   {% endfor %}
 
@@ -61,7 +61,7 @@
                   {% for club in clubs %}
                   <tr>
                     <td>{{club.name}}</td>
-                    <td>{{club.mail}}</td>
+		    <td><a href="mailto:{{club.mail}}" class="p-2">{{club.mail}}</a></td>
                   </tr>
                   {% endfor %}
               </tbody>

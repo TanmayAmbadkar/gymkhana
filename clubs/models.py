@@ -96,6 +96,7 @@ class Members(models.Model):
 
     club = models.OneToOneField(Club, on_delete=models.CASCADE)
     past = models.FileField(upload_to="csv/")
+    curr = models.FileField(upload_to="csv/", blank=True, null=True)
 
     def __str__(self):
 

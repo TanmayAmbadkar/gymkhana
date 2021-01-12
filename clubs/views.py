@@ -67,7 +67,24 @@ class PastMembersView(DetailView):
 
         return context
 
-def get_past_members(df):
+class CurrentMembersView(DetailView):
+
+    model = Club
+    template_name = 'clubs/current_members.html'
+
+    def get_context_data(self, **kwargs):
+
+        context = super(CurrentMembersView, self).get_context_data(**kwargs)
+
+        club = Club.objects.get(pk = self.kwargs['pk'])
+        member = Members.objects.get(club = club)
+        df = pd.read_csv(member.curr)
+
+        context['members'] = get_current_members(df)
+        return context
+
+
+def get_current_members(df):
 
     values = []
     for i in range(len(df)):
@@ -76,7 +93,37 @@ def get_past_members(df):
         row['name'] = df['Name'][i]
         row['batch'] = df['Batch'][i]
         row['position'] = df['Position'][i]
-        row['from'] = df['From'][i]
         values.append(row)
 
     return values
+
+def get_past_members(df):
+
+    values = {}
+    for i in range(len(df)):
+        row={}
+
+        row['name'] = df['Name'][i]
+        row['batch'] = df['Batch'][i]
+        row['position'] = df['Position'][i]
+
+        if df['From'][i] not in values:
+            values[ df['From'][i]] = []
+
+        x = len(values[ df['From'][i]])
+        row['serial'] = x+1
+        values[df['From'][i]].append(row)
+
+    sheets = []
+    i = 0
+    keys = list(values.keys())
+    keys.sort()
+    for key in keys:
+        sheet = {'year': key}
+        sheet['df'] = values[key]
+        if i==0:
+            sheet['active'] = 'active'
+        sheets.append(sheet)
+        i+=1
+
+    return sheets

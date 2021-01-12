@@ -110,14 +110,31 @@ def get_current_members(df):
 
 def get_past_members(df):
 
-    values = []
+    values = {}
     for i in range(len(df)):
         row={}
-        row['serial'] = i+1
+
         row['name'] = df['Name'][i]
         row['batch'] = df['Batch'][i]
         row['position'] = df['Position'][i]
-        row['from'] = df['From'][i]
-        values.append(row)
 
-    return values
+        if df['From'][i] not in values:
+            values[ df['From'][i]] = []
+
+        x = len(values[ df['From'][i]])
+        row['serial'] = x+1
+        values[df['From'][i]].append(row)
+
+    sheets = []
+    i = 0
+    keys = list(values.keys())
+    keys.sort()
+    for key in keys:
+        sheet = {'year': key}
+        sheet['df'] = values[key]
+        if i==0:
+            sheet['active'] = 'active'
+        sheets.append(sheet)
+        i+=1
+
+    return sheets

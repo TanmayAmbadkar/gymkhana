@@ -111,6 +111,9 @@
                 </div>
 {% endif %}
                 <div style="text-align:center">
+                    <a class="nav-link" aria-current="page" href={% url 'curr_club' pk=club.pk %}>Current Members</a>
+                </div>
+                <div style="text-align:center">
                     <a class="nav-link" aria-current="page" href={% url 'past_club' pk=club.pk %}>Past Members</a>
                 </div>
             </div>

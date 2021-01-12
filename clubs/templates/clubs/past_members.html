@@ -5,27 +5,56 @@
 <div class="container">
     <h1 class="display-4">{{club.name}}</h1>
     <hr>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Name</th>
-          <th scope="col">Batch</th>
-          <th scope="col">Position</th>
-          <th scope="col">Academic Year</th>
-        </tr>
-      </thead>
-      <tbody>
-          {% for member in members %}
-          <tr>
-            <th scope="row">{{member.serial}}</th>
-            <td>{{member.name}}</td>
-            <td>{{member.batch}}</td>
-            <td>{{member.position}}</td>
-            <td>{{member.from}}</td>
-          </tr>
-          {% endfor %}
-      </tbody>
-  </table>
+    <ul class="nav nav-tabs" role="tablist" id="member-list">
+        {% for member in members %}
+            <li class="nav-item">
+                {% if member.active %}
+                <a class="nav-link active" data-toggle="tab" href="#a{{member.year}}" role="tab">{{member.year}}</a>
+                {% else %}
+                <a class="nav-link" data-toggle="tab" href="#a{{member.year}}" role="tab">{{member.year}}</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="tab-content">
+        {% for member in members %}
+        {% if member.active %}
+        <div class="tab-pane active" id="a{{member.year}}" role="tabpanel">
+        {% else %}
+        <div class="tab-pane" id="a{{member.year}}" role="tabpanel">
+        {% endif %}
+
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Batch</th>
+                    <th scope="col">Position</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for detail in member.df %}
+                        <tr>
+                          <th scope="row">{{detail.serial}}</th>
+                          <td>{{detail.name}}</td>
+                          <td>{{detail.batch}}</td>
+                          <td>{{detail.position}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+            </div>
+        {% endfor %}
+    </div>
 </div>
+{% endblock %}
+{% block js %}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+<script>
+$('#member-list a').on('click', function (e) {
+ e.preventDefault()
+ $(this).tab('show')
+})
+</script>
 {% endblock %}

@@ -42,6 +42,9 @@ class FieldsAdmin(admin.ModelAdmin):
         return form
 
     def save_model(self, request, obj, form, change):
+        if request.user.is_superuser:
+            super().save_model(request, obj, form, change)
+            return
 
         club = Club.objects.get(user=request.user)
         obj.club = club

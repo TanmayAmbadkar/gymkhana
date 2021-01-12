@@ -1,3 +1,0 @@
-Sitemap: http://gymkhana.ml/sitemap.xml
-User-agent: *
-Disallow:

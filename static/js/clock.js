@@ -1,6 +1,6 @@
 var countDownDate = 0;
 var event = 0;
-fetch('http://localhost:8000/event').then(function(response){
+fetch('https://gymkhana.ml/event').then(function(response){
 
   return response.json();
 

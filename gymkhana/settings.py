@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'festivals',
     'gallery',
     'schedule',
-    'django_unused_media'
+    #'django_unused_media'
 ]
 
 MIDDLEWARE = [

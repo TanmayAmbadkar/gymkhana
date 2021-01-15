@@ -5,3 +5,4 @@ from homepage.models import *
 admin.site.register(Update)
 admin.site.register(MainPhoto)
 admin.site.register(About)
+admin.site.register(Countdown)

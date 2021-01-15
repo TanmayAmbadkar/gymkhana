@@ -1,5 +1,17 @@
-var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
+var countDownDate = 0;
+var event = 0;
+fetch('http://localhost:8000/event').then(function(response){
 
+  return response.json();
+
+ }).then(function(jsondata){
+
+   countDownDate = new Date(jsondata['dt']).getTime();
+   event = jsondata['name']
+
+ });
+
+console.log(countDownDate)
 // Update the count down every 1 second
 var x = setInterval(function() {
 
@@ -16,12 +28,13 @@ var x = setInterval(function() {
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
   // Display the result in the element with id="demo"
+  document.getElementById("eventname").innerHTML = event
   document.getElementById("clock").innerHTML = days + " <font size='6'>Days</font> " + hours + " <font size='6'>Hours</font> "
   + minutes + " <font size='6'>Mins</font> " + seconds + " <font size='6'>Secs</font> ";
 
   // If the count down is finished, write some text
   if (distance < 0) {
     clearInterval(x);
-    document.getElementById("clock").innerHTML = "EXPIRED";
+    document.getElementById("clock").innerHTML = "Countdown Over!";
   }
 }, 1000);

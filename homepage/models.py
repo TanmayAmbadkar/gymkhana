@@ -27,3 +27,10 @@ class MainPhoto(models.Model):
 class About(models.Model):
 
     description = models.TextField()
+
+class Countdown(models.Model):
+    event_name = models.CharField(max_length=255)
+    date = models.DateTimeField()
+
+    def __str__(self):
+        return f"{self.event_name} {self.date}"

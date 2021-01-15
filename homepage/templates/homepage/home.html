@@ -4,6 +4,10 @@
 {% block css %}
     <link rel="stylesheet" href={% static "css/homepage.css" %}>
     <link rel="stylesheet" href={% static "css/new.css" %}>
+    <link rel="stylesheet" href={% static "css/clock.css" %}>
+    <script type="text/javascript" src={% static "js/clock.js" %}>
+
+    </script>
 {% endblock %}
 
 {% block main %}
@@ -19,6 +23,15 @@
     <div class="container">
         <h3 class="display-6"><u>About</u></h3>
         <p class="lead">{{about.description|safe}}</p>
+    </div>
+    <hr class="container">
+    <div class="container">
+        <div class="col-md-8 mx-auto">
+            <div class="text-center">
+                <h1 class="display-3" id="eventname"></h1>
+                <p class="display-4" id="clock"></p>
+            </div>
+        </div>
     </div>
     <hr class="container">
     <div class="container">

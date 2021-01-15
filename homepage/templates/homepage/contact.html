@@ -6,31 +6,40 @@
 <div class="text-center">
     <h1 style="text-center" class="display-3">Contacts for Student Activities</h1>
 </div>
-<hr>
 <div class="container">
-            <h1 class="display-6">Professors In Charge for Committees</h1>
-            <hr>
+    <ul class="nav nav-tabs" role="tablist" id="member-list">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#pic" role="tab">PICs</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#comm" role="tab">Committees</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#club" role="tab">Clubs</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="pic" role="tabpanel">
             <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Name</th>
-                  <th scope="col">Committee</th>
-                  <th scope="col">Email</th>
-                </tr>
-              </thead>
-              <tbody>
-                  {% for prof in profs %}
-                      <tr>
-                        <td>{{prof.name}}</td>
-                        <td>{{prof.committee.name}}</td>
-                        <td><a href="mailto:{{committee.mail}}" class="p-2">{{prof.email}}</a></td>
-                      </tr>
-                  {% endfor %}
-
-              </tbody>
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Committee</th>
+                    <th scope="col">Email</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for prof in profs %}
+                        <tr>
+                          <td>{{prof.name}}</td>
+                          <td>{{prof.committee.name}}</td>
+                          <td><a href="mailto:{{committee.mail}}" class="p-2">{{prof.email}}</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
             </table>
-            <h1 class="display-6">Committees</h1>
-            <hr>
+        </div>
+        <div class="tab-pane" id="comm" role="tabpanel">
             <table class="table">
               <thead>
                 <tr>
@@ -41,15 +50,14 @@
               <tbody>
                   {% for committee in committees %}
                   <tr>
-		    <td>{{committee.name}}</td>
+                    <td>{{committee.name}}</td>
                     <td><a href="mailto:{{committee.mail}}" class="p-2">{{committee.mail}}</a></td>
                   </tr>
                   {% endfor %}
-
               </tbody>
             </table>
-            <h1 class="display-6">Clubs</h1>
-            <hr>
+        </div>
+        <div class="tab-pane" id="club" role="tabpanel">
             <table class="table">
               <thead>
                 <tr>
@@ -61,11 +69,21 @@
                   {% for club in clubs %}
                   <tr>
                     <td>{{club.name}}</td>
-		    <td><a href="mailto:{{club.mail}}" class="p-2">{{club.mail}}</a></td>
+                    <td><a href="mailto:{{club.mail}}" class="p-2">{{club.mail}}</a></td>
                   </tr>
                   {% endfor %}
               </tbody>
             </table>
-
         </div>
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script>
+        $('#member-list a').on('click', function (e) {
+         e.preventDefault()
+         $(this).tab('show')
+        })
+    </script>
 {% endblock %}

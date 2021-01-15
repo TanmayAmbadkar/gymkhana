@@ -4,6 +4,7 @@ from homepage.models import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from committees.models import Committee, PIC
 from clubs.models import Club
+from django.http import JsonResponse
 # Create your views here.
 
 
@@ -33,7 +34,22 @@ class ContactView(TemplateView):
         context = super(ContactView, self).get_context_data(**kwargs)
 
         context['profs'] = PIC.objects.all()
-        context['committees'] = Committee.objects.all()
-        context['clubs'] = Club.objects.all()
+        context['committees'] = Committee.objects.all().order_by('slug')
+        context['clubs'] = Club.objects.all().order_by('slug')
 
         return context
+
+def get_event(request):
+
+    weekdays = {0: "Mon", 1: "Tue", 2: "Wed", 3: "Thu", 4: "Fri", 5: "Sat", 6: "Sun"}
+    event = Countdown.objects.first()
+    date = event.date
+    name = event.event_name
+
+    month = date.strftime("%b")
+    year = date.strftime("%Y")
+    day = date.strftime("%d")
+    date = f"{month} {day}, {year} {date.strftime('%H:%M:%S')}"
+    print(day)
+
+    return JsonResponse({"name": name, 'dt': date})

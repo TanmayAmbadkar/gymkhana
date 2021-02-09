@@ -22,6 +22,7 @@ class HomeView(TemplateView):
         context['news'] = news
         context['main_image'] = MainPhoto.objects.first()
         context['about'] = About.objects.first()
+        context['countdown'] = Countdown.objects.first()
 
         return context
 

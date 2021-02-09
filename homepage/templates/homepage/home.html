@@ -25,6 +25,7 @@
         <p class="lead">{{about.description|safe}}</p>
     </div>
     <hr class="container">
+    {% if countdown %}
     <div class="container">
         <div class="col-md-8 mx-auto">
             <div class="text-center" id="clock">
@@ -36,6 +37,7 @@
             </div>
         </div>
     </div>
+    {% endif %}
     <hr class="container">
     <div class="container">
         <div class="row">

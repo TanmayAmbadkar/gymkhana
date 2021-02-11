@@ -27,13 +27,33 @@
     <hr class="container">
     {% if countdown %}
     <div class="container">
-        <div class="col-md-8 mx-auto">
-            <div class="text-center" id="clock">
-                <h1 class="display-4 text-uppercase" id="eventname"></h1>
-                <p><span id="days"></span>days</p>
-                <p><span id="hours"></span>hours</p>
-                <p><span id="mins"></span>mins</p>
-                <p><span id="secs"></span>seconds</p>
+        <div class="row">
+            <div class="col-md-3 timer">
+                <div class="text-center" id="clockl">
+                    <h1 class="display-6 text-uppercase" id="eventnamel"></h1>
+                    <p><span id="daysl"></span>days</p>
+                    <p><span id="hoursl"></span>hours</p>
+                    <p><span id="minsl"></span>mins</p>
+                    <p><span id="secsl"></span>seconds</p>
+                </div>
+            </div>
+            <div class="col-md-6 timer">
+                <div class="text-center" id="clock">
+                    <h1 class="display-4 text-uppercase" id="eventname"></h1>
+                    <p><span id="days"></span>days</p>
+                    <p><span id="hours"></span>hours</p>
+                    <p><span id="mins"></span>mins</p>
+                    <p><span id="secs"></span>seconds</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="text-center" id="clockr">
+                    <h1 class="display-6 text-uppercase" id="eventnamer"></h1>
+                    <p><span id="daysr"></span>days</p>
+                    <p><span id="hoursr"></span>hours</p>
+                    <p><span id="minsr"></span>mins</p>
+                    <p><span id="secsr"></span>seconds</p>
+                </div>
             </div>
         </div>
     </div>

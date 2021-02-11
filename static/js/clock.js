@@ -1,17 +1,44 @@
 var countDownDate = 0;
 var event = 0;
-fetch('https://gymkhana.ml/event').then(function(response){
+var countDownDatel = 0;
+var eventl = 0;
+var countDownDater = 0;
+var eventr = 0;
+fetch('http://localhost:8000/event').then(function(response){
 
   return response.json();
 
  }).then(function(jsondata){
 
    countDownDate = new Date(jsondata['dt']).getTime();
-   event = jsondata['name']
+   event = jsondata['name'];
+   countDownDatel = new Date(jsondata['dtl']).getTime();
+   eventl = jsondata['namel'];
+   countDownDater = new Date(jsondata['dtr']).getTime();
+   eventr = jsondata['namer'];
 
  });
 
-console.log(countDownDate)
+function setClock(distance, eventname, suffix)
+{
+     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+     if (distance < 0) {
+
+       var myobj = document.getElementById("clock"+suffix);
+       myobj.remove();
+       return 0;
+     }
+     // Display the result in the element with id="demo"
+     document.getElementById("eventname"+suffix).innerHTML = eventname;
+     document.getElementById("days"+suffix).innerText = days;
+     document.getElementById("hours"+suffix).innerText = hours;
+     document.getElementById("mins"+suffix).innerText = minutes;
+     document.getElementById("secs"+suffix).innerText = seconds;
+
+}
 // Update the count down every 1 second
 var x = setInterval(function() {
 
@@ -20,23 +47,11 @@ var x = setInterval(function() {
 
   // Find the distance between now and the count down date
   var distance = countDownDate - now;
+  var distancel = countDownDatel - now;
+  var distancer = countDownDater - now;
 
-  // Time calculations for days, hours, minutes and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  setClock(distance, event, "");
+  setClock(distancel, eventl, "l");
+  setClock(distancer, eventr, "r");
 
-  // Display the result in the element with id="demo"
-  document.getElementById("eventname").innerHTML = event;
-  document.getElementById("days").innerText = days;
-  document.getElementById("hours").innerText = hours;
-  document.getElementById("mins").innerText = minutes;
-  document.getElementById("secs").innerText = seconds;
-
-  // If the count down is finished, write some text
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("clock").innerHTML = "Countdown Over!";
-  }
 }, 1000);

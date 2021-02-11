@@ -33,10 +33,7 @@ class ContactView(TemplateView):
     def get_context_data(self, **kwargs):
 
         context = super(ContactView, self).get_context_data(**kwargs)
-
-        context['profs'] = PIC.objects.all()
         context['committees'] = Committee.objects.all().order_by('slug')
-        context['clubs'] = Club.objects.all().order_by('slug')
 
         return context
 
@@ -44,13 +41,22 @@ def get_event(request):
 
     weekdays = {0: "Mon", 1: "Tue", 2: "Wed", 3: "Thu", 4: "Fri", 5: "Sat", 6: "Sun"}
     event = Countdown.objects.first()
-    date = event.date
+    event_left = CountdownLeft.objects.first()
+    event_right = CountdownRight.objects.first()
+
+    date = get_date(event.date)
     name = event.event_name
+    datel = get_date(event_left.date)
+    namel = event_left.event_name
+    dater = get_date(event_right.date)
+    namer = event_right.event_name
+
+    return JsonResponse({"name": name, 'dt': date, 'namel':namel, 'dtl':datel, 'namer':namer, 'dtr':dater})
+
+def get_date(date):
 
     month = date.strftime("%b")
     year = date.strftime("%Y")
     day = date.strftime("%d")
     date = f"{month} {day}, {year} {date.strftime('%H:%M:%S')}"
-    print(day)
-
-    return JsonResponse({"name": name, 'dt': date})
+    return date

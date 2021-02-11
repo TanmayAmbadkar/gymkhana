@@ -34,3 +34,19 @@ class Countdown(models.Model):
 
     def __str__(self):
         return f"{self.event_name} {self.date}"
+
+
+class CountdownLeft(models.Model):
+    event_name = models.CharField(max_length=255)
+    date = models.DateTimeField()
+
+    def __str__(self):
+        return f"{self.event_name} {self.date}"
+
+
+class CountdownRight(models.Model):
+    event_name = models.CharField(max_length=255)
+    date = models.DateTimeField()
+
+    def __str__(self):
+        return f"{self.event_name} {self.date}"

@@ -85,6 +85,36 @@
   display: block;
   font-size: 4.5rem;
 }
+#clockl p {
+  display: inline-block;
+  font-size: 1.5em;
+  list-style-type: none;
+  padding: 1em 1em 0.5em 1em;
+  text-transform: uppercase;
+}
+
+#clockl p span {
+  display: block;
+  font-size: 2.5rem;
+}
+
+#clockr p {
+  display: inline-block;
+  font-size: 1.5em;
+  list-style-type: none;
+  padding: 1em 1em 0.5em 1em;
+  text-transform: uppercase;
+}
+
+#clockr p span {
+  display: block;
+  font-size: 2.5rem;
+}
+
+.timer{
+    border-right:1px solid #ccc;
+}
+
 @media all and (max-width: 768px) {
   #clock p{
     font-size: 1rem;
@@ -93,5 +123,34 @@
 
   #clock p span {
     font-size: 3rem;
+  }
+
+  #clockl p {
+    display: inline-block;
+    font-size: 1em;
+    list-style-type: none;
+    padding: 0.5em;
+    text-transform: uppercase;
+  }
+
+  #clockl p span {
+    display: block;
+    font-size: 2.5rem;
+  }
+    #clockr p {
+      display: inline-block;
+      font-size: 1em;
+      list-style-type: none;
+      padding: 0.5em;
+      text-transform: uppercase;
+    }
+
+    #clockr p span {
+      display: block;
+      font-size: 2.5rem;
+    }
+  .timer{
+      border-right: none;
+      border-bottom:1px solid #ccc;
   }
 }

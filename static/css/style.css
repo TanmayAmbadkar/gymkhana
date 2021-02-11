@@ -34,7 +34,7 @@ transition: .3s ease-in-out;
 .bio{
     border: 1px solid #e6e6e6;
     padding:1rem;
-    margin:2rem
+    margin:0.5rem
 }
 
 .bio:hover{
@@ -72,4 +72,8 @@ max-width:250px;
 }
 .card-group .card img{
     object-fit: cover;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgba(0,0,0,.75) !important;
 }

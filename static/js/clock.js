@@ -4,7 +4,7 @@ var countDownDatel = 0;
 var eventl = 0;
 var countDownDater = 0;
 var eventr = 0;
-fetch('http://localhost:8000/event').then(function(response){
+fetch('https://gymkhana.ml/event').then(function(response){
 
   return response.json();
 

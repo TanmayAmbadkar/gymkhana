@@ -34,7 +34,7 @@ transition: .3s ease-in-out;
 .bio{
     border: 1px solid #e6e6e6;
     padding:1rem;
-    margin:0.5rem
+    margin:0.5rem;
 }
 
 .bio:hover{

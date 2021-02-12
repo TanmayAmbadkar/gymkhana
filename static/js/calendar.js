@@ -151,7 +151,7 @@ function showEvents() {
          eventHeader.appendChild(document.createTextNode(key));
          eventContainer.appendChild(eventHeader);
 
-         eventDescription.appendChild(document.createTextNode(objWithDate[key]));
+         eventDescription.innerHTML = objWithDate[key];
          eventContainer.appendChild(eventDescription);
 
          let markWrapper = document.createElement("div");

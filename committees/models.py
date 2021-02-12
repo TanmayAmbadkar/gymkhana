@@ -22,6 +22,7 @@ class CommitteeEvent(models.Model):
     committee = models.ForeignKey(Committee, on_delete=models.CASCADE)
     description = models.TextField()
     logo = models.ImageField(upload_to="logos/", null = True, blank=True)
+    upcoming = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name

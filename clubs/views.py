@@ -33,11 +33,11 @@ class ClubDetailView(DetailView):
         except Photos.DoesNotExist:
             context['photos'] = None
         try:
-            context['events'] = ClubEvent.objects.filter(club=club)
+            context['upcoming'] = ClubEvent.objects.filter(club = club).filter(upcoming=True)
+            context['major_events'] = ClubEvent.objects.filter(club = club).filter(upcoming=False)
         except ClubEvent.DoesNotExist:
-            context['events'] = None
-        #context['sec'] = Secretary.objects.get(club = club)
-        #context['jsec'] = JointSecretary.objects.get(club = club)
+            context['major_events'] = None
+            context['present_events'] = None
         try:
             context['sec'] = Secretary.objects.get(club=club)
         except Secretary.DoesNotExist:

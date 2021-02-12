@@ -28,9 +28,11 @@ class CommitteeDetailView(DetailView):
         #context['photos'] = Photos.objects.get(committee = committee)
         #context['carousel'] = CarouselPhotos.objects.get(committee = committee)
         try:
-            context['events'] = CommitteeEvent.objects.filter(committee = committee)
+            context['upcoming'] = CommitteeEvent.objects.filter(committee = committee).filter(upcoming=True)
+            context['major_events'] = CommitteeEvent.objects.filter(committee = committee).filter(upcoming=False)
         except CommitteeEvent.DoesNotExist:
-            context['events'] = None
+            context['major_events'] = None
+            context['present_events'] = Non
         try:
             context['pic'] = PIC.objects.get(committee = committee)
         except PIC.DoesNotExist:

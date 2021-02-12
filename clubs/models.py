@@ -28,6 +28,7 @@ class ClubEvent(models.Model):
     name = models.CharField(max_length=255)
     club = models.ForeignKey(Club, on_delete=models.CASCADE)
     description = models.TextField()
+    upcoming = models.BooleanField(default=False)
 
 
     def __str__(self):

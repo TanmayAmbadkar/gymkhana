@@ -4,7 +4,7 @@ a{
 .text-info {
     color: #31708f;
 }
-.physicianList ul{margin: 0; padding: 0; list-style: none;}
+.physicianList ul{margin: 0; list-style: none;}
 .physicianList ul li{width: 300px; float: left}
 /*Pagination CSS*/
 #page_navigation {
@@ -23,7 +23,7 @@ a{
 	color:white !important;
 }
 
-.physicianList2 ul{margin: 0; padding: 0; list-style: none;}
+.physicianList2 ul{margin: 0; list-style: none;}
 .physicianList2 ul li{width: 300px;float: left;}
 /*Pagination CSS*/
 #page_navigation2 {

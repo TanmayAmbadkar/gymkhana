@@ -169,9 +169,9 @@
             <h1 class="display-6"><u>Clubs under the committee</u></h1>
             <div class="row">
                 {% for club in clubs %}
-                    <div class="col-md-3 mx-auto">
+                    <div class="col-sm-3 mx-auto">
                         <div class="bio text-center">
-                            <img src="/media/{{club.logo}}" height="150" width=auto alt="clublogo">
+                            <img src="/media/{{club.logo}}" height="100" width=auto alt="clublogo">
                             <hr>
                             <div class="bio-body">
                                 <h4><a href={% url 'club_detail' pk=club.pk %} style="text-decoration: none;">{{club.name}}</a></h4>

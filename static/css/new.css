@@ -4,7 +4,28 @@ a{
 .text-info {
     color: #31708f;
 }
-.physicianList ul{margin: 0; list-style: none;}
+.physicianList ul{
+   margin: 0; 
+   list-style: none; 
+
+}
+
+@media all and (max-width: 768px){
+   .physicianList ul{
+      display: flex; 
+      flex-direction: column; 
+      padding:32px;
+      align-items:center;
+   }
+   .physicianList2 ul{
+      display: flex;
+      flex-direction: column;
+      padding:32px;
+      align-items:center;
+   }
+}
+
+
 .physicianList ul li{width: 300px; float: left}
 /*Pagination CSS*/
 #page_navigation {

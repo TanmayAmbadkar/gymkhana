@@ -9,7 +9,7 @@ class Club(models.Model):
     slug = models.SlugField(max_length=255, primary_key=True)
     logo = models.ImageField(upload_to="logos/", null = True, blank=True)
     about = models.TextField()
-    achievements = models.TextField()
+    achievements = models.TextField(blank = True, null = True)
     mail = models.EmailField(null = True, blank=True)
     linkedin = models.URLField(null = True, blank=True)
     github = models.URLField(null = True, blank=True)

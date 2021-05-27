@@ -25,10 +25,15 @@ function setClock(distance, eventname, suffix)
      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-     if (distance < 0) {
+     if (distance <= 0) {
 
-       var myobj = document.getElementById("clock"+suffix);
-       myobj.remove();
+       //var myobj = document.getElementById("clock"+suffix);
+       //myobj.remove();
+       document.getElementById("eventname"+suffix).innerHTML = eventname;
+       document.getElementById("days"+suffix).innerText = 0;
+       document.getElementById("hours"+suffix).innerText = 0;
+       document.getElementById("mins"+suffix).innerText = 0;
+       document.getElementById("secs"+suffix).innerText = 0;
        return 0;
      }
      // Display the result in the element with id="demo"

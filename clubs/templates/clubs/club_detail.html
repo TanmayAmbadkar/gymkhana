@@ -120,14 +120,14 @@
                 </div>
             </div>
             <div class="col-lg-8">
-                <h1 class="display-6"><u>About</u></h1>
+                <h3 class="display-6">About</h3>
                 <p>{{club.about|safe}}</p>
                 <hr>
-                <h1 class="display-6"><u>Events</u></h1>
+                <h3 class="display-6">Events</h3>
                 <br>
                 <div class="row">
                   <div class="col-md-8">
-                      <h3 class="display-7">Major Events</h3>
+                      <h4><u>Major Events</u></h4>
                       <div class="row">
                           {% for event in major_events %}
                               <div class="col-md-6">
@@ -151,7 +151,7 @@
                       </div>
                   </div>
                   <div class="col-md-4" style='align-text:center'>
-                      <h3 class="display-7">Upcoming</h3>
+                      <h4><u>Upcoming</u></h4>
                       <br>
                       {% for event in upcoming %}
                         <div class="bio text-center">
@@ -175,12 +175,14 @@
                   </div>
                 </div>
                 <hr>
-                <h1 class="display-6"><u>Achievements</u></h1>
-                <p>{{club.achievements|safe}}</p>
+		{% if club.achievements %}
+	                <h3 class="display-6">Achievements</h3>
+	                <p>{{club.achievements|safe}}</p>
+		{% endif %}
             </div>
         </div>
         <hr>
-        <h1 class="display-6"><u>Photos</u></h1>
+        <h3 class="display-6">Photos</h3>
         <br>
         <div class="card-group">
           <div class="card">

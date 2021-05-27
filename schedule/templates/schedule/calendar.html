@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href={% static "css/calendar.css" %}>
+    <link rel="stylesheet" href={% static "css/homepage.css" %}>
     <!-- link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -12,6 +13,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <script type="text/javascript" src={% static "js/main.js" %}>
     </script>
+    <style>
+    a{
+	text-decoration:none;
+        color: #073b88;
+    }
+    </style>
     <title>Student Activities | IIITV</title>
   </head>
 
@@ -23,52 +30,53 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href={% url 'home' %}>Home</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Committees
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    {% for committee in committees %}
-                      <li><a class="dropdown-item" href={% url 'committee_detail' pk=committee.pk%}>{{committee.name}}</a></li>
-                    {% endfor %}
-                  </ul>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Clubs
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    {% for club in clubs_base %}
-                      <li><a class="dropdown-item" href={% url 'club_detail' pk=club.pk%}>{{club.name}}</a></li>
-                    {% endfor %}
-                  </ul>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Festivals
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    {% for fest in fests %}
-                      <li><a class="dropdown-item" href={% url 'festival_detail' pk=fest.pk%}>{{fest.name}}</a></li>
-                    {% endfor %}
-                  </ul>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Miscellaneous
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href={% url 'gallery'%}>Gallery</a></li>
-                      <li><a class="dropdown-item" href={% url 'calendar'%}>Calendar</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href={% url 'contact' %}>Contacts</a>
-                </li>
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="committees" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Activities
+                </a>
+		<ul class="dropdown-menu" aria-labelledby="committees">
+                    <li><a class="dropdown-item" href={% url 'home' %}>Home</a></li>
+                    <li><a class="dropdown-item" href="http://iiitvadodara.ac.in/" target="_blank">IIITV</a></li>
+                    <li><a class="dropdown-item" href={% url 'gallery' %}>Gallery</a></li>
+                    <li><a class="dropdown-item" href={% url 'calendar' %}>Calendar</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="committees" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Committees
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="committees">
+                  {% for committee in committees %}
+                    <li><a class="dropdown-item" href={% url 'committee_detail' pk=committee.pk%}>{{committee.name}}</a></li>
+                  {% endfor %}
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="clubs" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Clubs
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="clubs">
+                  {% for club in clubs_base %}
+                    <li><a class="dropdown-item" href={% url 'club_detail' pk=club.pk%}>{{club.name}}</a></li>
+                  {% endfor %}
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="misc" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Festivals
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="misc">
+                  {% for fest in fests %}
+                    <li><a class="dropdown-item" href={% url 'festival_detail' pk=fest.pk%}>{{fest.name}}</a></li>
+                  {% endfor %}
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href={% url 'contact' %}>Contact Us</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -108,7 +116,7 @@
                       <div class="row header-title">
 
                         <div class="header-text">
-                          <h3 id="month-name">February</h3>
+                          <h2 id="month-name">February</h2>
                           <h5 id="todayDayName">Today is Friday 7 Feb</h5>
                         </div>
 
@@ -142,7 +150,7 @@
             </div>
         </div>
     </div>
-<footer class="page-footer font-small pt-4" style="background-color: #aaa;">
+<footer class="page-footer font-small pt-4" style="background-color: #aad8d3;">
 
       <div class="container-fluid text-center text-md-left">
         <div class="row">

@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href= "{% static 'css/style.css' %}">
+    <link rel="stylesheet" href= "{% static 'css/homepage.css' %}">
     <meta name="description" content="This is the student gymkhana of IIIT Vadodara">
     {% block css %}
     {% endblock %}
@@ -30,9 +31,9 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="committees">
                     <li><a class="dropdown-item" href={% url 'home' %}>Home</a></li>
+		    <li><a class="dropdown-item" href="http://iiitvadodara.ac.in/" target="_blank">IIITV</a></li>
 		    <li><a class="dropdown-item" href={% url 'gallery' %}>Gallery</a></li>
                     <li><a class="dropdown-item" href={% url 'calendar' %}>Calendar</a></li>
-                    <li><a class="dropdown-item" href={% url 'contact' %}>Contacts</a></li>
                 </ul>
               </li>
 
@@ -66,6 +67,9 @@
                   {% endfor %}
                 </ul>
               </li>
+	      <li class="nav-item">
+                <a class="nav-link" aria-current="page" href={% url 'contact' %}>Contact Us</a>
+              </li>
               <!-- li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Miscellaneous
@@ -88,7 +92,7 @@
 
     {% endblock %}
     </main>
-    <footer class="page-footer font-small pt-4" style="background-color: #aaa;">
+    <footer class="page-footer font-small pt-4" style="background-color: #aad8d3;">
 
       <div class="container-fluid text-center text-md-left">
         <div class="row">
@@ -111,7 +115,7 @@
                 <a href={% url 'gallery' %} class="foot-link">Photo Gallery</a>
               </li>
               <li>
-                <a href="http://iitvadodara.ac.in/" class="foot-link">IIIT Vadodara</a>
+                <a href="http://iiitvadodara.ac.in/" class="foot-link">IIIT Vadodara</a>
               </li>
             </ul>
           </div>

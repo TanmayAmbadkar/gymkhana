@@ -106,14 +106,14 @@
                 </div>
             </div>
             <div class="col-lg-8">
-                <h1 class="display-6"><u>About</u></h1>
+                <h3 class="display-6">About</h3>
                 <p>{{committee.about|safe}}</p>
                 <hr>
-		        <h1 class="display-6"><u>Events</u></h1>
+	        <h3 class="display-6">Events</h3>
                 <br>
                 <div class="row">
                   <div class="col-md-8">
-                      <h3 class="display-7">Major Events</h3>
+                      <h4><u>Major Events</u></h4>
                       <div class="row">
                           {% for event in major_events %}
                               <div class="col-md-6">
@@ -137,7 +137,7 @@
                       </div>
                   </div>
                   <div class="col-md-4" style='align-text:center'>
-                      <h3 class="display-7">Upcoming</h3>
+                      <h4><u>Upcoming</u></h4>
                       <br>
                       {% for event in upcoming %}
                         <div class="bio text-center">
@@ -161,12 +161,13 @@
                   </div>
                 </div>
 	      {% if committee.achievement %}
-	      <h1 class="display-6"><u>Achievements</u></h1>
+	      <h3 class="display-6">Achievements</h3>
               <p>{{committee.achievement|safe}}</p>
 	      {% endif %}
             </div>
+            </div>
 	    {% if clubs %}
-            <h1 class="display-6"><u>Clubs under the committee</u></h1>
+            <h3 class="display-6">Clubs under the committee</h3>
             <div class="row">
                 {% for club in clubs %}
                     <div class="col-sm-3 mx-auto">
@@ -181,8 +182,8 @@
                 {% endfor %}
             </div>
             {% endif %}
-        </div>
-        <h1 class="display-6"><u>Photos</u></h1>
+        <br>
+        <h3 class="display-6">Photos</h3>
         <br>
         <div class="card-group">
           <div class="card">

@@ -50,3 +50,14 @@ class CountdownRight(models.Model):
 
     def __str__(self):
         return f"{self.event_name} {self.date}"
+
+class Contributor(models.Model):
+
+    name = models.CharField(max_length=255)
+    batch = models.CharField(max_length=4)
+    linkedin = models.URLField(blank=True, null=True)
+    github = models.URLField(blank=True, null=True)
+    website = models.URLField(blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.name} {self.batch}"

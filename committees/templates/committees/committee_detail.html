@@ -11,7 +11,7 @@
 }
 </style>
 {%if carousel %}
-    <div class="container">
+    <div class="container" data-aos="fade-up">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
               <div class="carousel-item active">
@@ -40,7 +40,7 @@
     <div class="container" style="padding-left:2rem; padding-right:2rem">
         <div class="row" >
             <div class="col-lg-4">
-                <div class="bio text-center">
+                <div class="bio text-center shadow p-3 mb-5 rounded" data-aos="fade-up">
 
                     <img src="/media/{{committee.logo}}" width=auto height=100 alt="committee logo">
                     <hr>
@@ -52,7 +52,7 @@
                 </div>
                 <br>
                 <br>
-                <div class="bio text-center">
+                <div class="bio text-center" data-aos="fade-up">
 
                     <img src="/media/{{pic.photo}}" class="rounded-circle" width=100 height=100 style="margin-top:-4rem" alt="prof">
 
@@ -67,7 +67,7 @@
                 <br>
                 <br>
                 {% if president %}
-                <div class="bio text-center">
+                <div class="bio text-center" data-aos="fade-up">
 
                     <img src="/media/{{president.photo}}" class="rounded-circle" width=100 height=100 style="margin-top:-4rem" alt="pred">
 
@@ -84,7 +84,7 @@
                 {% if vpres %}
 		        <br>
                 <br>
-                <div class="bio text-center">
+                <div class="bio text-center" data-aos="fade-up">
 
                     <img src="/media/{{vpres.photo}}" class="rounded-circle" width=100 height=100 style="margin-top:-4rem" alt="vicepres">
 
@@ -105,7 +105,7 @@
                     <a class="nav-link" aria-current="page" href={% url 'past_members' pk=committee.pk %}>Past Members</a>
                 </div>
             </div>
-            <div class="col-lg-8">
+            <div class="col-lg-8" data-aos="fade-up">
                 <h3 class="display-6">About</h3>
                 <p>{{committee.about|safe}}</p>
                 <hr>
@@ -117,7 +117,7 @@
                       <div class="row">
                           {% for event in major_events %}
                               <div class="col-md-6">
-                                  <div class="bio text-center">
+                                  <div class="bio text-center" data-aos="fade-up">
                                       {% if event.logo %}
                                         <img src="/media/{{event.logo}}" class="rounded-circle" width=100 height="100" alt="eventlogo" style="object-fit:cover">
                                       {% endif %}
@@ -140,7 +140,7 @@
                       <h4><u>Upcoming</u></h4>
                       <br>
                       {% for event in upcoming %}
-                        <div class="bio text-center">
+                        <div class="bio text-center" data-aos="fade-up">
                             {% if event.logo %}
                               <img src="/media/{{event.logo}}" class="rounded-circle" width=100 height="100" alt="eventlogo" style="object-fit:cover">
                             {% endif %}
@@ -161,8 +161,8 @@
                   </div>
                 </div>
 	      {% if committee.achievement %}
-	      <h3 class="display-6">Achievements</h3>
-              <p>{{committee.achievement|safe}}</p>
+	      <h3 class="display-6" data-aos="fade-up">Achievements</h3>
+              <p data-aos="fade-up">{{committee.achievement|safe}}</p>
 	      {% endif %}
             </div>
             </div>
@@ -170,7 +170,7 @@
             <h3 class="display-6">Clubs under the committee</h3>
             <div class="row">
                 {% for club in clubs %}
-                    <div class="col-sm-3 mx-auto">
+                    <div class="col-md-3 mx-auto" data-aos="fade-up">
                         <div class="bio text-center">
                             <img src="/media/{{club.logo}}" height="100" width=auto alt="clublogo">
                             <hr>
@@ -190,11 +190,12 @@
             <img src="/media/{{photos.photo1}}" class="card-img-top" alt="..." height="250" data-bs-toggle="modal" data-bs-target="#staticBackdrop1" >
             <p data-bs-toggle="modal" data-bs-target="#staticBackdrop1">{{photos.caption1}}</p>
             <div class="modal fade" id="staticBackdrop1" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
+                <div class="modal-dialog">                  
                   <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
+	 	    <div class="modal-header">
+		       <h5 class="modal-title">{{photos.caption1}}</h5>
+         	       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		    </div>
                     <div class="modal-body">
                       <img src="/media/{{photos.photo1}}" alt="" class="img-fluid" style=":filter: none;-webkit-filter: none">
                     </div>
@@ -209,7 +210,8 @@
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                       <h5 class="modal-title">{{photos.caption2}}</h5>
+                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                       <img src="/media/{{photos.photo2}}" alt="" class="img-fluid" style=":filter: none;-webkit-filter: none">
@@ -225,6 +227,7 @@
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
+		      <h5 class="modal-title">{{photos.caption3}}</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -243,6 +246,7 @@
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
+                      <h5 class="modal-title">{{photos.caption4}}</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -259,6 +263,7 @@
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
+                      <h5 class="modal-title">{{photos.caption5}}</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -275,6 +280,7 @@
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
+                      <h5 class="modal-title">{{photos.caption6}}</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -293,6 +299,7 @@
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
+                      <h5 class="modal-title">{{photos.caption7}}</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -309,6 +316,7 @@
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
+                      <h5 class="modal-title">{{photos.caption8}}</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -325,6 +333,7 @@
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
+                      <h5 class="modal-title">{{photos.caption9}}</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">

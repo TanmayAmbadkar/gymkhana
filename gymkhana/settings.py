@@ -21,7 +21,7 @@ FEST_DIR = BASE_DIR / 'festivals/templates/festivals'
 HOME_DIR = BASE_DIR / 'homepage/templates/homepage'
 GALLERY_DIR = BASE_DIR / 'gallery/templates/gallery'
 SCHEDULE_DIR = BASE_DIR / 'schedule/templates/schedule'
-
+PWA_SERVICE_WORKER_PATH = BASE_DIR / 'static/js/serviceworker.js'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -32,7 +32,7 @@ SECRET_KEY =config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if config("DEBUG")=="True" else False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'gymkhana.ml']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'gymkhana.ml', '20.198.106.20']
 
 
 # Application definition
@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'festivals',
     'gallery',
     'schedule',
+#    'pwa',
     #'django_unused_media'
 ]
 
@@ -141,3 +142,33 @@ STATICFILES_DIRS = [BASE_DIR/ 'static']
 MEDIA_URL = '/media/'
 #MEDIAFILES_DIRS = [BASE_DIR / 'media']
 MEDIA_ROOT = BASE_DIR / 'media'
+
+PWA_APP_NAME = 'Gymkhana'
+PWA_APP_DESCRIPTION = "This is the Student gymkhana website for IIITV"
+PWA_APP_THEME_COLOR = '#aad8d3'
+PWA_APP_BACKGROUND_COLOR = '#ffffff'
+PWA_APP_DISPLAY = 'fullscreen'
+PWA_APP_SCOPE = '/'
+PWA_APP_ORIENTATION = 'any'
+PWA_APP_START_URL = '/'
+PWA_APP_STATUS_BAR_COLOR = 'default'
+PWA_APP_ICONS = [
+    {
+        'src': '/static/images/icon-512x512.png',
+        'sizes': '512x512'
+    }
+]
+PWA_APP_ICONS_APPLE = [
+    {
+        'src': '/static/images/icon-192x192.png',
+        'sizes': '192x192'
+    }
+]
+PWA_APP_SPLASH_SCREEN = [
+    {
+        'src': '/static/images/icon-512x512.png',
+        'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
+    }
+]
+PWA_APP_DIR = 'ltr'
+PWA_APP_LANG = 'en-US'

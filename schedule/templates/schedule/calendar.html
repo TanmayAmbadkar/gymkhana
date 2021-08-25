@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href={% static "css/calendar.css" %}>
     <link rel="stylesheet" href={% static "css/homepage.css" %}>
+    <link rel="icon" href={% static "images/logo.png" %}>
     <!-- link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -23,9 +24,9 @@
   </head>
 
   <body>
-      <nav class="navbar navbar-expand-lg navbar-light">
+      <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-          <a class="navbar-brand" href="{% url 'home' %}"><img src={% static "images/iiitv.jpg" %} width=50 height=50></a>
+          <a class="navbar-brand" href="{% url 'home' %}"><img src={% static "images/logo.png" %} height=80 width=80></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -41,6 +42,7 @@
                     <li><a class="dropdown-item" href="http://iiitvadodara.ac.in/" target="_blank">IIITV</a></li>
                     <li><a class="dropdown-item" href={% url 'gallery' %}>Gallery</a></li>
                     <li><a class="dropdown-item" href={% url 'calendar' %}>Calendar</a></li>
+                    <li><a class="dropdown-item" href={% url 'contributors' %}>Contributors</a></li>
                 </ul>
               </li>
 
@@ -81,7 +83,7 @@
           </div>
         </div>
       </nav>
-    <div class="container">
+    <div class="container animated animatedFadeInUp fadeInUp">
 
         <div class="row">
             <div class="col-md-4">
@@ -99,7 +101,7 @@
                 </div>
             </div>
             <div class="col-md-8">
-              <div class="container shadow p-1 mb-2 bg-white rounded">
+              <div class="container p-1 rounded">
 
                 <div class="calendar-wrapper z-depth-2">
 
@@ -150,7 +152,7 @@
             </div>
         </div>
     </div>
-<footer class="page-footer font-small pt-4" style="background-color: #aad8d3;">
+<footer class="page-footer font-small pt-4" style="background-color: #0F3460;">
 
       <div class="container-fluid text-center text-md-left">
         <div class="row">
@@ -180,6 +182,7 @@
           <hr class="clearfix w-100 d-md-none pb-3">
         </div>
       </div>
+      <hr class="footerhr">
       <div class="footer-copyright text-center py-3 dark">
           Designed and developed by <a href="https://makingcomputerssmart.com/" rel="noreferrer noopener nofollow" target="_blank" class="foot-link">Tanmay Ambadkar</a> & Atishay Jain
       </div>

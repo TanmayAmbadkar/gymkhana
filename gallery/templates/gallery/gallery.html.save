@@ -1,0 +1,40 @@
+{% extends "homepage/base.html" %}
+{%  load static %}
+
+{% block main %}
+<style>
+@media (min-width: 992px) {
+  .modal-dialog {
+    max-width: 60%;
+  }
+}
+</style>
+<div class="container animated animatedFadeInUp fadeInUp">
+    <br>
+    {% for event in events %}
+            <h1 class="display-6">{{event.name}}</h1>
+            <div class="row ">
+                {% for photo in event.photos %}
+                    <div class="col-md-4 mx-auto" id="gallery-col">
+                      <img data-bs-toggle="modal" data-bs-target="#staticBackdrop{{photo.pk}}" src="/media/{{photo.photo}}" class="img-fluid" id="gallery-img">
+                    </div>
+                    <div class="modal fade" id="staticBackdrop{{photo.pk}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <img src="/media/{{photo.photo}}" alt="" class="img-fluid">
+                              <h5 class="modal-title">{{photo.caption}}</h5>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <hr>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

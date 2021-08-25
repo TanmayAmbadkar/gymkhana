@@ -11,24 +11,24 @@
 {% endblock %}
 
 {% block main %}
-    <div class="container">
+    <div class="container" data-aos="fade-up" data-aos-once="true">
         <section class="wrapper" style="background-image: url({{main_image.url}});">
-            <div class="divider">
+            <div class="divider" data-aos="fade-up">
                 <h1>Student Activities | IIIT Vadodara</h1>
             </div>
         </section>
     </div>
     <br>
     <br>
-    <div class="container">
+    <div class="container" data-aos="fade-up" data-aos-once="true">
         <h3 class="display-6">About</h3>
         <p class="lead">{{about.description|safe}}</p>
     </div>
     <hr class="container">
     {% if countdown %}
-    <div class="container">
+    <div class="container" data-aos="fade-up" data-aos-once="true">
         <div class="row">
-            <div class="col-md-3 timer">
+            <div class="col-md-3 timer" data-aos="fade-up" data-aos-once="true">
                 <div class="text-center" id="clockl">
                     <h1 class="display-6 text-uppercase" id="eventnamel" style="color: cornflowerblue"></h1>
                     <p><span id="daysl"></span>days</p>
@@ -37,7 +37,7 @@
                     <p><span id="secsl"></span>seconds</p>
                 </div>
             </div>
-            <div class="col-md-6 timer">
+            <div class="col-md-6 timer" data-aos="fade-up" data-aos-once="true">
                 <div class="text-center" id="clock">
                     <h1 class="display-4 text-uppercase" id="eventname" style="color: green"></h1>
                     <p><span id="days"></span>days</p>
@@ -46,7 +46,7 @@
                     <p><span id="secs"></span>seconds</p>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3" data-aos="fade-up" data-aos-once="true">
                 <div class="text-center" id="clockr">
                     <h1 class="display-6 text-uppercase" id="eventnamer" style="color: indianred"></h1>
                     <p><span id="daysr"></span>days</p>
@@ -59,7 +59,7 @@
     </div>
     {% endif %}
     <hr class="container">
-    <div class="container">
+    <div class="container" data-aos="fade-up" data-aos-once="true">
         <div class="row">
             <div class="col-md-6 text-center" style="border-right: 1px solid #ccc;">
                 <div id="ann">
@@ -67,11 +67,11 @@
                     <br>
                     <div class="physicianList">
                         <input type='hidden' id='current_page' />
-                        <input type='hidden' id='show_per_page' />
+                	<input type='hidden' id='show_per_page' />
                         <ul id="pagingBox">
                             {% for announcement in announcements %}
                            <li>
-                                 <div class="card bio" style="border: none;margin:10px">
+                                 <div class="card bio" style="border: none;margin:10px" data-aos="fade-up" data-aos-once="true">
                                    <div class="card-body scroll">
                                      <h5 class="card-title">{{announcement.title}}</h5>
                                      <hr>
@@ -108,7 +108,7 @@
                         <ul id="pagingBox2">
                             {% for new in news %}
                            <li>
-                                 <div class="card bio" style="border: none;margin:10px">
+                                 <div class="card bio" style="border: none;margin:10px" data-aos="fade-up" data-aos-once="true">
                                    <div class="card-body scroll">
                                      <h5 class="card-title">{{new.title}}</h5>
                                      <hr>

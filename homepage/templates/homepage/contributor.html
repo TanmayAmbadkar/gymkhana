@@ -1,0 +1,51 @@
+{% extends "homepage/base.html" %}
+{%  load static %}
+
+{% block main %}
+<hr>
+<div class="text-center animated animatedFadeInUp fadeInUp">
+    <h1 style="text-center" class="display-3">Contributors for Webpage</h1>
+</div>
+<div class="container animated animatedFadeInUp fadeInUp">
+    <div class="tab-pane" id="comm" role="tabpanel">
+        <table class="table table-dark table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Batch</th>
+              <th scope="col">Links</th>
+            </tr>
+          </thead>
+          <tbody>
+              {% for contrib in contributors %}
+              <tr>
+                <td>{{contrib.name}}</td>
+                <td>{{contrib.batch}}</td>
+				<td>
+					{% if contrib.linkedin %}
+					<a href="{{contrib.linkedin}}" rel="noreferrer" target="_blank" class="p-2"><span class="fa fa-linkedin"></span></a>
+					{% endif %}
+					{% if contrib.github %}
+					<a href="{{contrib.github}}" rel="noreferrer" target="_blank" class="p-2"><span class="fa fa-github"></span></a>
+					{% endif %}
+					{% if contrib.website %}
+					<a href="{{contrib.website}}" rel="noreferrer" target="_blank" class="p-2"><span class="fa fa-globe"></span></a>
+					{% endif %}
+				</td>
+              </tr>
+              {% endfor %}
+          </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script>
+        $('#member-list a').on('click', function (e) {
+         e.preventDefault()
+         $(this).tab('show')
+        })
+    </script>
+{% endblock %}
+

@@ -9,7 +9,7 @@
   }
 }
 </style>
-<div class="container">
+<div class="container" data-aos="fade-up">
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
           <div class="carousel-item active">
@@ -36,7 +36,7 @@
 <div class="container" style="padding-left:2rem; padding-right:2rem">
     <div class="row" >
         <div class="col-md-4">
-            <div class="bio text-center">
+            <div class="bio text-center shadow p-3 mb-5 rounded" data-aos="fade-up">
 
                 <img src="/media/{{festival.logo}}" width=200 height=auto>
                 <hr>
@@ -68,16 +68,16 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-8">
-            <h1 class="display-6"><u>About</u></h1>
+        <div class="col-md-8" data-aos="fade-up">
+            <h3 class="display-6">About</h3>
             {{festival.about|safe}}
             <hr>
-            <h1 class="display-6"><u>Events</u></h1>
+            <h3 class="display-6">Events</h3>
             {{festival.events|safe}}
         </div>
     </div>
     <hr>
-    <h1 class="display-6"><u>Photos</u></h1>
+    <h3 class="display-6">Photos</h3>
     <br>
     <div class="card-group">
       <div class="card">
@@ -87,6 +87,7 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
+                  <h5 class="modal-title">{{photos.caption1}}</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -103,6 +104,7 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
+		  <h5 class="modal-title">{{photos.caption2}}</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -119,6 +121,7 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
+                  <h5 class="modal-title">{{photos.caption3}}</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -137,6 +140,7 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
+                  <h5 class="modal-title">{{photos.caption4}}</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -153,6 +157,7 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
+                  <h5 class="modal-title">{{photos.caption5}}</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -169,6 +174,7 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
+                  <h5 class="modal-title">{{photos.caption6}}</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -187,6 +193,7 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
+                  <h5 class="modal-title">{{photos.caption7}}</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -203,6 +210,7 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
+                  <h5 class="modal-title">{{photos.caption8}}</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -219,6 +227,7 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
+                  <h5 class="modal-title">{{photos.caption9}}</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">

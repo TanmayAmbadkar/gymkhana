@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href= "{% static 'css/style.css' %}">
     <link rel="stylesheet" href= "{% static 'css/homepage.css' %}">
+    <link rel="icon" href={% static "images/icon-192x192.png" %}>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <meta name="description" content="This is the student gymkhana of IIIT Vadodara">
     {% block css %}
     {% endblock %}
@@ -16,9 +18,9 @@
     <title>Student Activities | IIITV</title>
     </head>
     <body>
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container">
-        <a class="navbar-brand" href="{% url 'home' %}"><img src={% static "images/iiitv.jpg" %} width=50 height=50 alt="logo"></a>
+        <a class="navbar-brand" href="{% url 'home' %}"><img src={% static "images/icon-192x192.png" %} width=80 height=80 alt="logo"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -34,6 +36,7 @@
 		    <li><a class="dropdown-item" href="http://iiitvadodara.ac.in/" target="_blank">IIITV</a></li>
 		    <li><a class="dropdown-item" href={% url 'gallery' %}>Gallery</a></li>
                     <li><a class="dropdown-item" href={% url 'calendar' %}>Calendar</a></li>
+                    <li><a class="dropdown-item" href={% url 'contributors' %}>Contributors</a></li>
                 </ul>
               </li>
 
@@ -92,14 +95,15 @@
 
     {% endblock %}
     </main>
-    <footer class="page-footer font-small pt-4" style="background-color: #aad8d3;">
+    <footer class="page-footer font-small pt-4" style="background-color: #0F3460;" data-aos="fade-up" data-aos-once="true">
 
       <div class="container-fluid text-center text-md-left">
         <div class="row">
 	  <div class="col-md-2"></div>
           <div class="col-md-6">
             <h5 class="text-uppercase">Student Gymkhana | IIIT Vadodara</h5>
-            <p>The Student Gymkhana of IIIT Vadodara aims at maintaining and providing good extra co-curricular activities to it's students ensuring a perfect balance between their academics & social life through various events conducted by its clubs headed by different Committees. </p>
+            <!--p>The Student Gymkhana of IIIT Vadodara aims at maintaining and providing good extra co-curricular activities to it's students ensuring a perfect balance between their academics & social life through various events conducted by its clubs headed by different Committees. </p-->
+	    <p><b>Disclaimer: The contents in the website are for information purpose only. The students of IIIT Vadodara regularly monitor and update the information on this website. We attempt to ensure that the information on this website is correct, however, we do not warrant its completeness or accuracy. IIIT Vadodara cannot be held responsible for any consequences arising from the use of information obtained from these websites</b></p>
           </div>
           <hr class="clearfix w-100 d-md-none pb-3">
           <div class="col-md-3 mb-md-0 mb-3">
@@ -122,11 +126,16 @@
           <hr class="clearfix w-100 d-md-none pb-3">
         </div>
       </div>
+      <hr class="footerhr">
       <div class="footer-copyright text-center py-3 dark">
                 Designed and developed by <a href="https://makingcomputerssmart.com/" rel="noreferrer noopener nofollow" target="_blank" class="foot-link">Tanmay Ambadkar</a> & Atishay Jain
       </div>
     </footer>
     {% block js %}
     {% endblock %}
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({once: 'true', offset: 40, duration:750});
+    </script>
   </body>
 </html>

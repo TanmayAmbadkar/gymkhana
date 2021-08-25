@@ -36,7 +36,7 @@ h3,h4,h5 {
 }
 
 .calendar-content {
-   background-color: #fff;
+   background-color: #16213E;
    padding: 20px;
    padding-left: 15%;
    padding-right: 15%;
@@ -195,12 +195,12 @@ h3,h4,h5 {
 #table-body .col:hover {
    cursor: pointer;
    /*border: 1px solid grey;*/
-   background-color: #E0E0E0;
+   background-color: #0F3460;
 }
 
 .empty-day:hover {
    cursor: default !important;
-   background-color: #fff !important;
+   background-color: #Of3460!important;
 }
 
 #table-body .row .col {
@@ -352,4 +352,7 @@ h3,h4,h5 {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+.foot-link{
+    color: #E94560
 }

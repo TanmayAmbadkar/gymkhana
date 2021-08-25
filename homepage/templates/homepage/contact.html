@@ -3,12 +3,12 @@
 
 {% block main %}
 <hr>
-<div class="text-center">
+<div class="text-center animated animatedFadeInUp fadeInUp">
     <h1 style="text-center" class="display-3">Contacts for Student Activities</h1>
 </div>
-<div class="container">
+<div class="container animated animatedFadeInUp fadeInUp">
     <div class="tab-pane" id="comm" role="tabpanel">
-        <table class="table">
+        <table class="table table-dark table-striped">
           <thead>
             <tr>
               <th scope="col">Committee Name</th>
@@ -19,7 +19,7 @@
               {% for committee in committees %}
               <tr>
                 <td>{{committee.name}}</td>
-                <td><a href="mailto:{{committee.mail}}" class="p-2 text-wrap">{{committee.mail}}</a></td>
+                <td><a href="mailto:{{committee.mail}}" class="p-2 text-wrap foot-link" style="color:#447ed3">{{committee.mail}}</a></td>
               </tr>
               {% endfor %}
           </tbody>

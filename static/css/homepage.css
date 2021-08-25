@@ -1,10 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Merriweather:400,900italic,900,700italic,700,400italic);
 
 body{
-    background-color: #eeeeee!important;
-    color: #393e46!important;
-    background-image: url('https://gymkhana.ml/static/images/photography.png');
+    background-color: #1A1A2E!important;
+    color: #eee!important;
+    /*background-image: url('https://gymkhana.ml/static/images/photography.png');*/
+    background-attachment: fixed;
 }
+
 .container section {
     color: #000000;
     padding: 40px 0;
@@ -167,20 +169,34 @@ body{
   }
 }
 
+hr.footerhr{
+  margin: 0px;
+}
+
+@media all and (max-width : 768px){
+
+  h3{
+    padding-top:20px;
+  }
+  hr{
+    height:0px!important;
+  }
+}
+
+.display-6, .display-4{
+    font-weight:500!important;
+}
 
 h3 {
   display: inline-block;
   position: relative;
-  height: 60px;/*高さ*/
-  line-height: 60px;/*高さ*/
+  line-height: 60px;
   text-align: center;
-  padding: 0 40px 0 18px;/*文字の左右の余白*/
-  font-size: 18px;/*文字サイズ*/
-  background: #aad8d3;/*背景色*/
-  color: #393e46;/*文字色*/
+  padding: 0 20px 0 20px;
+  color: #FAA916;
   box-sizing: border-box;
 }
-
+/*
 h3:after {
   position: absolute;
   content: '';
@@ -195,4 +211,65 @@ h3:after {
   border-width: 30px 15px 30px 0px;
   border-color: transparent #eeeeee transparent transparent;
   border-style: solid;
+}
+*/
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: both
+}
+
+.animatedFadeInUp {
+    opacity: 0
+}
+
+.fadeInUp {
+    opacity: 0;
+    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
+}
+
+.card {
+    background-color: #16213E!important;
+}
+.btn-link{
+    color: #E94560!important;
+}
+a{
+    color: #0F3460!imporant;
+}
+.dropdown-item{
+    color: #E94560!important;
+}
+.dropdown-menu{
+    background-color: #16213E!important;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: #E94560!important;
+}
+.modal-content{
+    background-color: #0F3460!important;
 }

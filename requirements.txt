@@ -25,6 +25,7 @@ django-estimators==0.2.1
 django-heroku==0.3.1
 django-imperavi==0.2.3
 django-paging==0.2.5
+django-progressive-web-app==0.1.1
 django-rest-framework==0.1.0
 django-sendgrid-v5==0.8.1
 django-storages==1.9.1

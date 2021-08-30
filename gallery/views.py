@@ -15,8 +15,11 @@ class GalleryView(TemplateView):
         l = []
         for event in Event.objects.all().order_by('-date'):
 
+            if len(Photo.objects.filter(event=event))==0:
+                continue
             d = {}
             d['name'] = event.name
+            d['ename'] = ''.join(event.name.split())
             d['photos'] = Photo.objects.filter(event=event)
             l.append(d)
 

@@ -13,6 +13,12 @@ class FestDetailView(DetailView):
         context = super(FestDetailView, self).get_context_data(**kwargs)
         fest = Festival.objects.get(pk = self.kwargs['pk'])
         context['fest'] = fest
-        context['photos'] = Photos.objects.get(fest = fest)
-        context['carousel'] = CarouselPhotos.objects.get(fest = fest)
+        try:
+            context['photos'] = Photos.objects.get(fest = fest)
+        except:
+            context['photos'] = []
+        try:
+            context['carousel'] = CarouselPhotos.objects.get(fest = fest)
+        except:
+            context['carousel'] = None
         return context

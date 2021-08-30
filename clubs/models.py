@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import CheckConstraint, Q, F
 from committees.models import *
 # Create your models here.
 class Club(models.Model):
@@ -110,6 +111,15 @@ class CalendarEvent(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     club = models.ForeignKey(Club, on_delete=models.CASCADE)
+
+    class Meta:
+        constraints = [
+            CheckConstraint(
+                check = Q(end_date__gte=F('start_date')), 
+                name = 'check_start_date',
+            ),
+        ]
+
 
     def __str__(self):
         return f"{self.name} {self.club.name}"

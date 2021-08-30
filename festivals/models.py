@@ -1,9 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
+from committees.models import *
 # Create your models here.
 class Festival(models.Model):
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, primary_key=True)
     logo = models.ImageField(upload_to="logos/", null = True, blank=True)
@@ -16,6 +16,7 @@ class Festival(models.Model):
     instagram = models.URLField(null = True, blank=True)
     facebook = models.URLField(null = True, blank=True)
     twitter = models.URLField(null = True, blank=True)
+    committee = models.OneToOneField(Committee, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.name

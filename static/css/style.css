@@ -76,3 +76,7 @@ max-width:250px;
 .navbar-dark .navbar-nav .nav-link {
     color: #E94560!important;
 }
+.gallery{
+   max-height: 300px;
+   object-fit: cover;
+}

@@ -8,6 +8,12 @@
     max-width: 60%;
   }
 }
+.carousel{display: none}
+@media (max-width: 770px){
+   .carousel{display: inline} 
+   .gallerygrid{display: none} 
+}
+
 </style>
 <div class="container">
     <br>
@@ -16,8 +22,8 @@
             <h1 class="display-6">{{event.name}}</h1>
             <div class="row ">
                 {% for photo in event.photos %}
-                    <div class="col-md-4 mx-auto" id="gallery-col">
-                      <img data-bs-toggle="modal" data-bs-target="#staticBackdrop{{photo.pk}}" src="/media/{{photo.photo}}" class="img-fluid" id="gallery-img">
+                    <div class="col-md-4 mx-auto gallerygrid" id="gallery-col">
+                      <img data-bs-toggle="modal" data-bs-target="#staticBackdrop{{photo.pk}}" data-src="/media/{{photo.photo}}" class="img-fluid gallery lazy" id="gallery-img">
                     </div>
                     <div class="modal fade" id="staticBackdrop{{photo.pk}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -34,8 +40,31 @@
                     </div>
                 {% endfor %}
             </div>
+            <div id="c{{event.ename}}" class="carousel slide" data-bs-ride="carousel">
+        	<div class="carousel-inner">
+  		  {% for photo in event.photos %}
+        	      <div class="carousel-item {{event.ename}}">
+        	        <img src="/media/{{photo.photo}}" class="d-block w-100 gallery" alt="...">
+        	      </div>
+                  {% endfor %}
+                <script>
+                   document.getElementsByClassName("{{event.ename}}")[0].classList.add("active");
+                </script>
+        	</div>
+		<a class="carousel-control-prev" href="#c{{event.ename}}" role="button" data-bs-slide="prev">
+		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+          	</a>
+          	<a class="carousel-control-next" href="#c{{event.ename}}" role="button" data-bs-slide="next">
+		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+	        <span class="visually-hidden">Next</span>    
+	      	</a>
+           </div>
             <hr>
         </div>
     {% endfor %}
 </div>
+{% endblock %}
+{% block js %}
+<script src={% static "js/gallery.js" %}>
 {% endblock %}

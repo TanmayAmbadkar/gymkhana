@@ -97,9 +97,9 @@ function createCalendar(date, side) {
 }
 
 function random_bg_color() {
-    var x = Math.floor(Math.random() * 128)+128;
-    var y = Math.floor(Math.random() * 128)+128;
-    var z = Math.floor(Math.random() * 128)+128;
+    var x = Math.floor(Math.random() * 100)+155;
+    var y = Math.floor(Math.random() * 100)+155;
+    var z = Math.floor(Math.random() * 100)+155;
     return "rgb(" + x + "," + y + "," + z + ")";
     }
 createCalendar(currentDate, "null");

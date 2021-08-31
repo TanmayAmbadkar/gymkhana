@@ -1,6 +1,6 @@
 absl-py==0.9.0
 argon==0.2.0
-asgiref==3.2.10
+asgiref==3.4.1
 astunparse==1.6.3
 bcrypt==3.2.0
 beautifulsoup4==4.9.3
@@ -15,7 +15,7 @@ cryptography==2.9.2
 defusedxml==0.6.0
 dill==0.2.5
 dj-database-url==0.5.0
-Django==3.1.1
+Django==3.2.6
 django-allauth==0.41.0
 django-background-tasks==1.2.5
 django-compat==1.0.15
@@ -32,7 +32,7 @@ django-storages==1.9.1
 django-summernote==0.8.11.6
 django-templatetag-sugar==1.0
 django-unused-media==0.2.2
-djangorestframework==3.11.0
+djangorestframework==3.12.4
 djangorestframework-simplejwt==4.4.0
 docutils==0.15.2
 future==0.18.2

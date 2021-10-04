@@ -32,7 +32,7 @@ SECRET_KEY =config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if config("DEBUG")=="True" else False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'gymkhana.ml', '20.198.106.20']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'gymkhana.ml', '20.198.108.184', 'activities.kreiva2021.in']
 
 
 # Application definition

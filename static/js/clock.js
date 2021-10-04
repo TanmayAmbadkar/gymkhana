@@ -4,7 +4,7 @@ var countDownDatel = 0;
 var eventl = 0;
 var countDownDater = 0;
 var eventr = 0;
-fetch('https://gymkhana.ml/event').then(function(response){
+fetch('https://activities.kreiva2021.in/event').then(function(response){
 
   return response.json();
 
@@ -17,7 +17,24 @@ fetch('https://gymkhana.ml/event').then(function(response){
    countDownDater = new Date(jsondata['dtr']).getTime();
    eventr = jsondata['namer'];
 
- });
+ }).catch((error) => {
+
+   fetch('https://gymkhana.ml/event').then(function(response){
+
+  return response.json();
+
+ }).then(function(jsondata){
+
+   countDownDate = new Date(jsondata['dt']).getTime();
+   event = jsondata['name'];
+   countDownDatel = new Date(jsondata['dtl']).getTime();
+   eventl = jsondata['namel'];
+   countDownDater = new Date(jsondata['dtr']).getTime();
+   eventr = jsondata['namer'];
+
+ })
+
+});
 
 function setClock(distance, eventname, suffix)
 {

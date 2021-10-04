@@ -1,6 +1,16 @@
 var globalEventObj = {}
 
-fetch('https://gymkhana.ml/calendar/dates').then(function(response){
+fetch('https://activities.kreiva2021.in/calendar/dates').then(function(response){
+
+  return response.json();
+
+ }).then(function(jsondata){
+
+  globalEventObj = jsondata;
+
+ }).catch((error) => {
+
+  fetch('https://gymkhana.ml/calendar/dates').then(function(response){
 
   return response.json();
 
@@ -9,6 +19,8 @@ fetch('https://gymkhana.ml/calendar/dates').then(function(response){
   globalEventObj = jsondata;
 
  });
+
+});
 
 var youtube = document.querySelectorAll( ".youtube" );
 
